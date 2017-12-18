@@ -4,7 +4,8 @@ class BoardsController < ApplicationController
   end
 
   def show
-    # Main controller of the app, should handle displaying the board and all threads within it, most recent posts.
+    # Main controller of the app, should handle displaying the board and
+    # all threads within it, most recent posts.
     # Should render components from react with API
   end
 end

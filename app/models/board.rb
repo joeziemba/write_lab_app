@@ -12,5 +12,5 @@ class Board < ApplicationRecord
 
   # VALIDATIONS
   validates :name,
-    presence: true
+            presence: true
 end

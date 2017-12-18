@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218175816) do
+ActiveRecord::Schema.define(version: 20171218202606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20171218175816) do
   create_table "posts", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "character_id", null: false
-    t.bigint "storyarc_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "story_arc_id"
     t.index ["character_id"], name: "index_posts_on_character_id"
-    t.index ["storyarc_id"], name: "index_posts_on_storyarc_id"
+    t.index ["story_arc_id"], name: "index_posts_on_story_arc_id"
   end
 
   create_table "story_arcs", force: :cascade do |t|

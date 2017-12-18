@@ -6,8 +6,8 @@ class Board < ApplicationRecord
   # t.timestamps
 
   # ASSOCIATIONS
-  # has_many :characters
-  # has_many :threads
+  has_many :characters
+  has_many :threads
   belongs_to :author
 
   # VALIDATIONS

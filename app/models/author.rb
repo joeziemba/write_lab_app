@@ -5,10 +5,10 @@ class Author < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  # has_many :boards
-  # has_many :characters
-  # has_many :posts, through :characters
-  # has_many :threads, through :characters
+  has_many :boards
+  has_many :characters
+  has_many :posts, through: :characters
+  has_many :threads, through: :characters
 
   # Validations
   validates_presence_of :username, :email, :password

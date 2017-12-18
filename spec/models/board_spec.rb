@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Board, type: :model do
   it 'should initiate with a name, description and author_id' do
-    board = Board.new()
+    board = Board.new
 
     expect(board).to have_attributes(name: nil)
     expect(board).to have_attributes(description: '')
@@ -19,7 +19,7 @@ RSpec.describe Board, type: :model do
   end
 
   it 'should be invalid without a name and author' do
-    board = Board.new()
+    board = Board.new
 
     expect(board.valid?).to be false
     expect(board.errors.full_messages).to include("Name can't be blank")

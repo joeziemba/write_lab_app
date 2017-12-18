@@ -5,6 +5,6 @@ FactoryBot.define do
     first_name  'Joe'
     last_name   'Ziemba'
     password    'password'
-    password_confirmation  "password"
+    password_confirmation 'password'
   end
 end

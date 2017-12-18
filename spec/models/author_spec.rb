@@ -15,7 +15,7 @@ RSpec.describe Author, type: :model do
 
   it 'should be invalid without an email, username and password' do
     author = Author.new(
-      username:'',
+      username: '',
       email: '',
       password: '',
       password_confirmation: ''
@@ -29,7 +29,7 @@ RSpec.describe Author, type: :model do
 
   it 'should be valid with only an email, username and password' do
     author = Author.new(
-      username:'joeziemba',
+      username: 'joeziemba',
       email: 'joe@joeziemba.com',
       password: 'password',
       password_confirmation: 'password'
@@ -40,7 +40,7 @@ RSpec.describe Author, type: :model do
 
   it 'should allow first, last and bio' do
     author = Author.new(
-      username:'joeziemba',
+      username: 'joeziemba',
       email: 'joe@joeziemba.com',
       password: 'password',
       password_confirmation: 'password',

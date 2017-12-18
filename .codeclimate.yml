@@ -12,6 +12,9 @@ engines:
         enabled: false
       Rubocop/Style/SymbolArray:
         enabled: false
+      Rubocop/Metrics/LineLength:
+        enabled: false
+
   brakeman:
     enabled: true
   eslint:

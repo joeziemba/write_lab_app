@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   it 'should initiate with attributes' do
-    post = Post.new()
+    post = Post.new
 
     expect(post).to have_attributes(content: nil)
     expect(post).to have_attributes(character_id: nil)
@@ -10,7 +10,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'should be invalid without content, storyarc and character' do
-    post = Post.new()
+    post = Post.new
 
     expect(post.valid?).to be false
     expect(post.errors.full_messages).to include("Content can't be blank")

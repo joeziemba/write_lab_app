@@ -1,7 +1,7 @@
 engines:
   rubocop:
     enabled: true
-    checks:rails s
+    checks:
       Rubocop/Style/Documentation:
         enabled: false
       Rubocop/Style/StringLiterals:
@@ -16,10 +16,6 @@ engines:
     enabled: true
     checks:
       max_line_length:
-        enabled: false
-      Rubocop/Style/Documentation:
-        enabled: false
-      Rubocop/Style/StringLiterals:
         enabled: false
   duplication:
     enabled: true

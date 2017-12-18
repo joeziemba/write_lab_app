@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218171359) do
+ActiveRecord::Schema.define(version: 20171218173709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20171218171359) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_boards_on_author_id"
+  end
+
+  create_table "story_arcs", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "character_id", null: false
+    t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_story_arcs_on_board_id"
+    t.index ["character_id"], name: "index_story_arcs_on_character_id"
   end
 
 end

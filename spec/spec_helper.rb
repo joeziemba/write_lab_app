@@ -11,7 +11,18 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+
+require 'coveralls'
+Coveralls.wear!('rails')
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+
+# Filtering out unused directories from Coveralls. Remove filters if these become active
+SimpleCov.start 'rails' do
+  add_filter '/app/jobs'
+  add_filter '/app/mailers'
+  add_filter '/app/channels'
+end
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

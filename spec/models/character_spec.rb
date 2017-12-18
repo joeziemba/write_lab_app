@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Character, type: :model do
   it 'should initiate with attributes' do
-    character = Character.new()
+    character = Character.new
 
     expect(character).to have_attributes(name: nil)
     expect(character).to have_attributes(backstory: "")
@@ -13,7 +13,7 @@ RSpec.describe Character, type: :model do
   end
 
   it 'should be invalid without a name, board and author' do
-    character = Character.new()
+    character = Character.new
 
     expect(character.valid?).to be false
     expect(character.errors.full_messages).to include("Name can't be blank")

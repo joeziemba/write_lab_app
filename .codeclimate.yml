@@ -10,6 +10,8 @@ engines:
         enabled: false
       Rubocop/Lint/PercentSymbolArray:
         enabled: false
+      Rubocop/Style/SymbolArray:
+        enabled: false
   brakeman:
     enabled: true
   eslint:

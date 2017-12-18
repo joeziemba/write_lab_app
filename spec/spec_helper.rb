@@ -14,6 +14,14 @@
 
 require 'coveralls'
 Coveralls.wear!('rails')
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+
+# Filtering out unused directories from Coveralls. Remove filters if these become active
+SimpleCov.start 'rails' do
+  add_filter '/app/jobs'
+  add_filter '/app/mailers'
+  add_filter '/app/channels'
+end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

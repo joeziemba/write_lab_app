@@ -1,6 +1,11 @@
 engines:
   rubocop:
     enabled: true
+    checks:
+      Rubocop/Style/Documentation:
+        enabled: false
+      Rubocop/Style/StringLiterals:
+        enabled: false
   brakeman:
     enabled: true
   eslint:

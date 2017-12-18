@@ -2,7 +2,7 @@ class DeviseCreateAuthors < ActiveRecord::Migration[5.1]
   def change
     create_table :authors do |t|
       ## DATABASE AUTHENTICATABLE
-      t.string :username,           null: false
+      t.string :username,           null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

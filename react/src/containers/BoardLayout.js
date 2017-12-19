@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import BoardSidebar from '../components/BoardSidebar'
+import BoardSidebar from '../components/BoardSidebar';
+import BoardContent from './BoardContent';
 
 class BoardLayout extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      description: ''
+      description: '',
+      image: '',
+      boardId: ''
     }
   }
 
@@ -28,7 +31,9 @@ class BoardLayout extends Component {
     .then(body => {
       this.setState({
        name: body.name,
-       description: body.description
+       description: body.description,
+       image: body.image,
+       boardId: body.id
      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -44,6 +49,10 @@ class BoardLayout extends Component {
         <BoardSidebar
           name={this.state.name}
           description={this.state.description}
+          image={this.state.image}
+        />
+        <BoardContent
+          boardId={this.props.params.id}
         />
       </div>
     )

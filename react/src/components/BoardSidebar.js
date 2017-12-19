@@ -2,7 +2,7 @@ import React from 'react';
 
 const BoardSidebar = (props) => {
   let background = {
-    backgroundImage: "url('https://images.fineartamerica.com/images-medium-large-5/sunrise-in-red-cassandra-campbell.jpg')",
+    backgroundImage: "url(" + props.image + ")",
     backgroundPosition: "center center",
     backgroundSize: "100%",
   }

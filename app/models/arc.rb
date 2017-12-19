@@ -1,4 +1,4 @@
-class StoryArc < ApplicationRecord
+class Arc < ApplicationRecord
   # SCHEMA
   # t.string      :title,     null: false
   # t.references  :character, null: false

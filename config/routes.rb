@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :boards, only: [:show] do
-        resources :story_arcs, only: [:index]
+        resources :arcs, only: [:index]
       end
     end
   end

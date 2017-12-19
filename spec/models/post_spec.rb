@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
 
     expect(post).to have_attributes(content: nil)
     expect(post).to have_attributes(character_id: nil)
-    expect(post).to have_attributes(story_arc_id: nil)
+    expect(post).to have_attributes(arc_id: nil)
   end
 
   it 'should be invalid without content, storyarc and character' do
@@ -35,11 +35,11 @@ RSpec.describe Post, type: :model do
       content: 'Stumbled outta bed and tumbled in the kitchen to pour myself a cup of ambition'
     )
     post.character = character
-    post.story_arc = storyarc
+    post.arc = storyarc
 
     expect(post).to have_attributes(content: 'Stumbled outta bed and tumbled in the kitchen to pour myself a cup of ambition')
     expect(post).to have_attributes(character_id: character.id)
-    expect(post).to have_attributes(story_arc_id: storyarc.id)
+    expect(post).to have_attributes(arc_id: storyarc.id)
 
     expect(post.valid?).to be true
   end

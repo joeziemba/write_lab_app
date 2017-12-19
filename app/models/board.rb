@@ -7,7 +7,7 @@ class Board < ApplicationRecord
 
   # ASSOCIATIONS
   has_many :characters
-  has_many :story_arcs
+  has_many :arcs
   belongs_to :author
 
   # VALIDATIONS

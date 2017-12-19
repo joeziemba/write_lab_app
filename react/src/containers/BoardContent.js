@@ -11,7 +11,7 @@ class BoardContent extends Component {
   }
 
   getThreads() {
-    fetch(`/api/v1/boards/${this.props.boardId}/story_arcs`, {
+    fetch(`/api/v1/boards/${this.props.boardId}/arcs`, {
       credentials: 'same-origin'
     })
     .then(response => {

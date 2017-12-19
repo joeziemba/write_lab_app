@@ -14,9 +14,8 @@ class BoardLayout extends Component {
   // }
 
   render() {
-
     return(
-
+      <div></div>
     )
   }
 }

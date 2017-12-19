@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 # User Authentication:
 gem 'devise'
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.3'
+gem 'jquery-rails'
 
 group :development do
   gem 'listen', '~> 3.0.5'

@@ -42,6 +42,8 @@ class BoardContent extends Component {
         <ThreadTile
           key={t.id}
           title={t.title}
+          character={t.character}
+          postDate={t.created_at}
         />
       )
     })

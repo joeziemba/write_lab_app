@@ -1,10 +1,9 @@
 class ArcSerializer < ActiveModel::Serializer
   attributes  :id,
               :title,
-              :character
+              :created_at
 
   has_many :posts
-  belongs_to :board
   belongs_to :character
 
   class CharacterSerializer < ActiveModel::Serializer

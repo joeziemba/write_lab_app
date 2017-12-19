@@ -1,0 +1,31 @@
+#board-sidebar {
+  background: $light-gray;
+  height: 100vh;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+
+  h2 {
+    text-align: center;
+    margin: 0;
+    line-height: 100%;
+  }
+
+  h6 {
+    text-align: center;
+    margin: 10px 0;
+    color: $dark-gray;
+    font-style: italic;
+  }
+
+  hr {
+    width: 50%;
+  }
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+#board-image {
+  height: 200px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}

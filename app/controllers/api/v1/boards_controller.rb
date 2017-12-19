@@ -1,6 +1,6 @@
 class Api::V1::BoardsController < ApplicationController
   def show
-    venue = Venue.find(params[:id])
-    render json: venue
+    board = Board.find(params[:id])
+    render json: board
   end
 end

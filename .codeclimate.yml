@@ -16,6 +16,8 @@ engines:
         enabled: false
       Rubocop/Metrics/BlockLength:
         enabled: false
+      Rubocop/Style/ClassAndModuleChildren:
+        enabled: false
   brakeman:
     enabled: true
   eslint:

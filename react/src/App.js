@@ -6,6 +6,7 @@ const App = (props) => {
     <div>
       <Router history={browserHistory}>
         <Route path='/' />
+        <Route path='/boards/:id' component={BoardContainer} />
       </Router>
     </div>
   )

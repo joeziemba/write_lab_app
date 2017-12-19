@@ -1,0 +1,19 @@
+.top-bar {
+  padding: 0 70px;
+  li {
+    &:hover {
+      background-color: #3b5154;
+    }
+    a {
+      color: #fefefe;
+      font-size: 12px;
+    }
+  }
+}
+
+.logo {
+  font-size: 20px;
+  color: $light-gray;
+  font-weight: bolder;
+  padding: 5px 0;
+}

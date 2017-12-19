@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ThreadTile from '../components/ThreadTile';
+import ArcTile from '../components/ArcTile';
 
 class BoardContent extends Component {
   constructor(props) {
@@ -37,20 +37,22 @@ class BoardContent extends Component {
   }
 
   render() {
-    let threadList = this.state.threads.map(t => {
-      return(
-        <ThreadTile
-          key={t.id}
-          title={t.title}
-          character={t.character}
-          postDate={t.created_at}
-        />
-      )
-    })
+    let arcList = "Looks like there's nothing here!"
+    if(this.state.threads.length > 0) {
+      arcList = this.state.threads.map(t => {
+        return(
+          <ArcTile
+            key={t.id}
+            title={t.title}
+            character={t.character}
+            postDate={t.created_at}
+          />
+        )
+      })
+    }
     return(
       <div id='content-container'>
-        Hello
-        {threadList}
+        {arcList}
       </div>
     )
   }

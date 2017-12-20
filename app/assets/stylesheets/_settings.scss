@@ -128,8 +128,8 @@ $block-grid-max: 8;
 
 // 4. Base Typography
 // ------------------
-
-$header-font-family: $body-font-family;
+@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400i');
+$header-font-family: 'Sorts Mill Goudy', serif;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;

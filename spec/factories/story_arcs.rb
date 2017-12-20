@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :story_arc do
+  factory :arc do
     title 'Making it Happen'
     character
     board

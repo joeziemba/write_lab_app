@@ -9,7 +9,7 @@ class Character < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :author
   belongs_to :board
-  has_many :story_arcs
+  has_many :arcs
   has_many :posts
 
   # VALIDATIONS

@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   # ASSOCIATIONS
   belongs_to :character
-  belongs_to :story_arc
+  belongs_to :arc
 
   # VALIDATIONS
   validates :content,

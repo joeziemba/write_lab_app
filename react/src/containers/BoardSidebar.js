@@ -13,7 +13,7 @@ class BoardSidebar extends Component {
 
   // Put your functions here
   getBoardData() {
-    fetch(`/api/v1/boards/${this.props.params.id}`, {
+    fetch(`/api/v1/boards/${this.props.params.board_id}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -58,7 +58,7 @@ class BoardSidebar extends Component {
             <p>{this.state.description}</p>
           </div>
         </div>
-        <div className='cell large-8 medium-7'>
+        <div className='cell large-8 medium-7' id='main-content'>
           {this.props.children}
         </div>
       </div>

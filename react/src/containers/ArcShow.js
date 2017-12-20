@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import ArcTile from '../components/ArcTile';
 
-class ArcIndex extends Component {
+class ArcShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      threads: []
+      arcData: {},
+      posts: []
     }
-    this.getThreads = this.getThreads.bind(this);
   }
 
-  getThreads() {
-    fetch(`/api/v1/boards/${this.props.params.board_id}/arcs`, {
+  getPosts() {
+    fetch(`/api/v1/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -33,29 +32,17 @@ class ArcIndex extends Component {
   }
 
   componentDidMount() {
-    this.getThreads();
+    this.getPosts();
   }
 
   render() {
-    let arcList = "Looks like there's nothing here!"
-    if(this.state.threads.length > 0) {
-      arcList = this.state.threads.map(t => {
-        return(
-          <ArcTile
-            key={t.id}
-            title={t.title}
-            character={t.character}
-            postDate={t.created_at}
-          />
-        )
-      })
-    }
+    debugger;
     return(
-      <div id='arc-container'>
-        {arcList}
+      <div>
+        Hello World
       </div>
     )
   }
 }
 
-export default ArcIndex;
+export default ArcShow;

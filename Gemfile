@@ -27,6 +27,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'coveralls', require: false
+  gem 'rails-controller-testing'
 end
 
 group :production do

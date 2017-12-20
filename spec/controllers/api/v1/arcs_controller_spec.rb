@@ -7,8 +7,8 @@ describe Api::V1::ArcsController, type: :controller do
   let!(:arc1) { create(:arc, title: 'Something Wicked', character: testChar, board: testBoard) }
   let!(:arc2) { create(:arc, title: 'Charms to Meet You', character: testChar, board: testBoard) }
 
-  let!(:post1) { Post.create(content: 'The first post!', arc: arc1, character: testChar)}
-  let!(:post2) { Post.create(content: 'The second post!', arc: arc1, character: testChar2)}
+  let!(:post1) { Post.create(content: 'The first post!', arc: arc1, character: testChar) }
+  let!(:post2) { Post.create(content: 'The second post!', arc: arc1, character: testChar2) }
 
   describe 'GET#index' do
     it 'should return a json response' do

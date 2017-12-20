@@ -1,8 +1,8 @@
 #board-sidebar {
   background: $light-gray;
-  height: 100vh;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   z-index: 1;
+  min-height: 100vh;
 
   h2 {
     text-align: center;
@@ -29,4 +29,9 @@
 #board-image {
   height: 200px;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+#main-content {
+  background: $medium-gray;
+  padding: 30px;
 }

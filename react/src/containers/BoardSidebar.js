@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import BoardSidebar from '../components/BoardSidebar';
-import BoardContent from './BoardContent';
+import { Link } from 'react-router';
 
-class BoardLayout extends Component {
+class BoardSidebar extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +14,7 @@ class BoardLayout extends Component {
 
   // Put your functions here
   getBoardData() {
-    fetch(`/api/v1/boards/${this.props.params.id}`, {
+    fetch(`/api/v1/boards/${this.props.params.board_id}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -44,19 +43,28 @@ class BoardLayout extends Component {
   }
 
   render() {
+    let background = {
+      backgroundImage: "url(" + this.state.image + ")",
+      backgroundPosition: "center center",
+      backgroundSize: "100%",
+    }
     return(
       <div className='grid-x'>
-        <BoardSidebar
-          name={this.state.name}
-          description={this.state.description}
-          image={this.state.image}
-        />
-        <BoardContent
-          boardId={this.props.params.id}
-        />
+        <div className='cell large-4 medium-5 hide-for-small-only' id='board-sidebar'>
+          <div id='board-image' style={ background } />
+          <div className='sidebar-content'>
+            <h6>Welcome to</h6>
+            <Link to={`/boards/${this.state.boardId}`}><h2>{this.state.name}</h2></Link>
+            <hr />
+            <p>{this.state.description}</p>
+          </div>
+        </div>
+        <div className='cell large-8 medium-7' id='main-content'>
+          {this.props.children}
+        </div>
       </div>
     )
   }
 }
 
-export default BoardLayout;
+export default BoardSidebar;

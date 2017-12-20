@@ -1,0 +1,27 @@
+.arc-tile {
+  padding: 30px;
+
+  h4 {
+    margin:0;
+    line-height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.arc-tile-container {
+  margin: 20px 30px;
+  border-top: 2px solid #263335;
+  background-color: $light-gray;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.arc-details {
+  background-color: #263335;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px 30px;
+  color: $medium-gray;
+  font-size: 12px;
+}

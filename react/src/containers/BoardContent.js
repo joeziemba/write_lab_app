@@ -51,7 +51,7 @@ class BoardContent extends Component {
       })
     }
     return(
-      <div id='content-container'>
+      <div id='arc-container' className='cell large-8 medium-7'>
         {arcList}
       </div>
     )

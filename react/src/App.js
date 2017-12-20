@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import AppContainer from './containers/AppContainer';
 import BoardSidebar from './containers/BoardSidebar';
 import ArcIndex     from './containers/ArcIndex';
 

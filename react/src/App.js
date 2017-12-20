@@ -1,15 +1,18 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import BoardLayout from './containers/BoardLayout'
+import AppContainer from './containers/AppContainer';
+import BoardSidebar from './containers/BoardSidebar';
+import ArcIndex     from './containers/ArcIndex';
 
 const App = (props) => {
   return(
-    <div>
-      <Router history={browserHistory}>
-        <Route path='/' />
-        <Route path='/boards/:id' component={BoardLayout} />
-      </Router>
-    </div>
+    <Router history={browserHistory}>
+        <Route path='/'>
+          <Route path='boards/:id' component={BoardSidebar}>
+            <IndexRoute component={ArcIndex} />
+          </Route>
+        </Route>
+    </Router>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ArcTile from '../components/ArcTile';
 
-class BoardContent extends Component {
+class ArcIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,7 +11,7 @@ class BoardContent extends Component {
   }
 
   getThreads() {
-    fetch(`/api/v1/boards/${this.props.boardId}/arcs`, {
+    fetch(`/api/v1/boards/${this.props.params.id}/arcs`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -51,11 +51,11 @@ class BoardContent extends Component {
       })
     }
     return(
-      <div id='arc-container' className='cell large-8 medium-7'>
+      <div id='arc-container'>
         {arcList}
       </div>
     )
   }
 }
 
-export default BoardContent;
+export default ArcIndex;

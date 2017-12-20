@@ -5,7 +5,7 @@ class ArcIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      threads: []
+      arcs: []
     }
     this.getThreads = this.getThreads.bind(this);
   }
@@ -26,7 +26,7 @@ class ArcIndex extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        threads: body
+        arcs: body
      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -38,14 +38,16 @@ class ArcIndex extends Component {
 
   render() {
     let arcList = "Looks like there's nothing here!"
-    if(this.state.threads.length > 0) {
-      arcList = this.state.threads.map(t => {
+    if(this.state.arcs.length > 0) {
+      arcList = this.state.arcs.map(a => {
         return(
           <ArcTile
-            key={t.id}
-            title={t.title}
-            character={t.character}
-            postDate={t.created_at}
+            key={a.id}
+            id={a.id}
+            title={a.title}
+            character={a.character}
+            postDate={a.created_at}
+            boardId={this.props.params.board_id}
           />
         )
       })

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class BoardSidebar extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class BoardSidebar extends Component {
           <div id='board-image' style={ background } />
           <div className='sidebar-content'>
             <h6>Welcome to</h6>
-            <h2>{this.state.name}</h2>
+            <Link to={`/boards/${this.state.boardId}`}><h2>{this.state.name}</h2></Link>
             <hr />
             <p>{this.state.description}</p>
           </div>

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import PostTile from '../components/PostTile';
+var strftime = require('strftime');
+var strftimeEST = strftime.timezone('-0500');
 
 class ArcShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
       arcData: {},
+      creator: '',
       posts: []
     }
   }
 
   getPosts() {
-    fetch(`/api/v1/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`, {
+    fetch(`/api/v1/arcs/${this.props.params.id}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -25,10 +29,17 @@ class ArcShow extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        threads: body
+        arcData: body,
+        creator: body.character.name,
+        posts: body.posts
      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  showDate(input) {
+    let date = strftimeEST('%b %d, %Y', new Date(input))
+    return date
   }
 
   componentDidMount() {
@@ -36,10 +47,28 @@ class ArcShow extends Component {
   }
 
   render() {
-    debugger;
+    let posts = this.state.posts.map(post => {
+      return(
+        <PostTile
+          key={post.id}
+          content={post.content}
+          character={post.character.name}
+          avatar={post.character.avatar_url}
+          postDate={post.created_at}
+        />
+      )
+    })
     return(
       <div>
-        Hello World
+        <div id='arc-header'>
+          <h3>{this.state.arcData.title}</h3>
+          <div>
+            <i>Posted by:&nbsp;</i> {this.state.creator}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; {this.showDate(this.state.arcData.created_at)}
+          </div>
+        </div>
+        <div>
+          {posts}
+        </div>
       </div>
     )
   }

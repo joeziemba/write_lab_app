@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :boards, only: [:show] do
         resources :arcs, only: [:index]
       end
+      resources :arcs, only: [:show]
     end
   end
 

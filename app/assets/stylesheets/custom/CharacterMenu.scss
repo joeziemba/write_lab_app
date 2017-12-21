@@ -1,0 +1,17 @@
+#character-menu {
+  padding: 20px;
+  background-color: #444;
+  color: $light-gray;
+
+  h4 {
+    margin: 0;
+    display: inline-block;
+  }
+
+  select {
+    border-radius: 0px;
+    border: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+  }
+}

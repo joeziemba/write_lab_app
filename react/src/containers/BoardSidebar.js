@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import CharacterMenu from '../components/CharacterMenu';
 
 class BoardSidebar extends Component {
   constructor(props) {
@@ -8,11 +9,23 @@ class BoardSidebar extends Component {
       name: '',
       description: '',
       image: '',
-      boardId: ''
+      boardId: '',
+      currentAuthor: {},
+      characters: [],
+      currentCharacter: {}
     }
+    this.changeCharacter = this.changeCharacter.bind(this);
   }
 
   // Put your functions here
+
+  changeCharacter(event) {
+    let newChar = this.state.characters.filter( c => c.id == event.target.value)
+    this.setState({
+      currentCharacter: newChar[0]
+    })
+  }
+
   getBoardData() {
     fetch(`/api/v1/boards/${this.props.params.board_id}`, {
       credentials: 'same-origin'
@@ -29,10 +42,13 @@ class BoardSidebar extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-       name: body.name,
-       description: body.description,
-       image: body.image,
-       boardId: body.id
+       name: body.boardData.name,
+       description: body.boardData.description,
+       image: body.boardData.image,
+       boardId: body.boardData.id,
+       currentAuthor: body.currentAuthor,
+       characters: body.characters,
+       currentCharacter: body.characters[0]
      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -59,8 +75,20 @@ class BoardSidebar extends Component {
             <p>{this.state.description}</p>
           </div>
         </div>
-        <div className='cell large-8 medium-7' id='main-content'>
-          {this.props.children}
+        <div className='cell large-8 medium-7'>
+          <div className='grid-x'>
+            <CharacterMenu
+              currentCharacterId={this.state.currentCharacter.id}
+              currentCharacterName={this.state.currentCharacter.name}
+              characters={this.state.characters}
+              changeCharacter={this.changeCharacter}
+            />
+          </div>
+          <div className='grid-x'>
+            <div className='cell large-12' id='main-content'>
+              {this.props.children}
+            </div>
+          </div>
         </div>
       </div>
     )

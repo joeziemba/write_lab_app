@@ -41,6 +41,7 @@ class BoardSidebar extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger;
       this.setState({
        name: body.boardData.name,
        description: body.boardData.description,
@@ -65,7 +66,7 @@ class BoardSidebar extends Component {
       backgroundSize: "100%",
     }
     return(
-      <div className='grid-x'>
+      <div className='grid-x' id='wrapper'>
         <div className='cell large-4 medium-5 hide-for-small-only' id='board-sidebar'>
           <div id='board-image' style={ background } />
           <div className='sidebar-content'>

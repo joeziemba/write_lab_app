@@ -61,3 +61,14 @@ require "valid_attribute"
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
+
+RSpec.configure do |config|
+  config.include Warden::Test::Helpers
+  Warden.test_mode!
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.after(:each) do
+    Warden.test_reset!
+  end
+end

@@ -68,14 +68,12 @@ class BoardContainer extends Component {
             boardDesc={this.state.description}
           />
         <div className='cell large-8 medium-7'>
-          <div className='grid-x'>
-            <CharacterMenu
-              currentCharacterId={this.state.currentCharacter.id}
-              currentCharacterName={this.state.currentCharacter.name}
-              characters={this.state.characters}
-              changeCharacter={this.changeCharacter}
-            />
-          </div>
+          <CharacterMenu
+            currentCharacterId={this.state.currentCharacter.id}
+            currentCharacterName={this.state.currentCharacter.name}
+            characters={this.state.characters}
+            changeCharacter={this.changeCharacter}
+          />
           <div className='grid-x'>
             <div className='cell large-12' id='main-content'>
               {this.props.children}

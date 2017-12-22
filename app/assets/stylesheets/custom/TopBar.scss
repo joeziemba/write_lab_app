@@ -1,9 +1,14 @@
 .top-bar {
   padding: 0 70px;
+  background: #111;
   li {
+    background-color: #111;
+    padding: 5px 0;
+
     &:hover {
-      background-color: #3b5154;
+      background-color: #333;
     }
+
     a {
       color: #fefefe;
       font-size: 12px;
@@ -15,5 +20,4 @@
   font-size: 20px;
   color: $light-gray;
   font-weight: bolder;
-  padding: 5px 0;
 }

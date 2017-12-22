@@ -18,19 +18,18 @@
         </div>
         <div class="top-bar-right">
           <ul class='menu'>
-          <% if !current_author %>
-          <li><%= link_to "Sign In", new_author_session_path %></li>
-          <li><%= link_to "Sign Up", new_author_registration_path %></li>
-          <% else %>
-          <ul class='menu'>
+            <% if !current_author %>
+            <li><%= link_to "Sign In", new_author_session_path %></li>
+            <li><%= link_to "Sign Up", new_author_registration_path %></li>
+            <% else %>
             <li>
               <a href='<%= edit_author_registration_path %>' >
                 <div class="profile-photo" style='background-image: url('');'></div> <%= "#{current_author.username}" %>
               </a>
             </li>
             <li><%= link_to "Sign Out", destroy_author_session_path, method: :delete, class: 'util-button' %></li>
-          </div>
-          <% end %>
+            <% end %>
+          </ul>
         </div>
       </div>
     </header>

@@ -1,0 +1,25 @@
+#character-menu {
+  padding: 20px;
+  background-color: #444;
+  color: $light-gray;
+
+  h4 {
+    margin: 0;
+    line-height: 100%;
+    padding-top: 10px;
+    padding-right: 35px;
+    text-align: right;
+  }
+
+  select {
+    border-radius: 0px;
+    border: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    margin: 0;
+    background-color: #444;
+    color: $light-gray;
+    font-family: 'Sorts Mill Goudy';
+    font-size: 20px;
+  }
+}

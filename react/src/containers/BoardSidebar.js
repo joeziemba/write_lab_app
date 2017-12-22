@@ -32,16 +32,14 @@ class BoardSidebar extends Component {
     })
     .then(response => {
       if (response.ok) {
-        return response;
+        return response.json();
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage);
         throw(error);
       }
     })
-    .then(response => response.json())
     .then(body => {
-      debugger;
       this.setState({
        name: body.boardData.name,
        description: body.boardData.description,
@@ -59,16 +57,20 @@ class BoardSidebar extends Component {
     this.getBoardData();
   }
 
-  render() {
+  setBoardImage() {
     let background = {
       backgroundImage: "url(" + this.state.image + ")",
       backgroundPosition: "center center",
       backgroundSize: "100%",
     }
+    return background;
+  }
+
+  render() {
     return(
       <div className='grid-x' id='wrapper'>
         <div className='cell large-4 medium-5 hide-for-small-only' id='board-sidebar'>
-          <div id='board-image' style={ background } />
+          <div id='board-image' style={ this.setBoardImage() } />
           <div className='sidebar-content'>
             <h6>Welcome to</h6>
             <Link to={`/boards/${this.state.boardId}`}><h2>{this.state.name}</h2></Link>

@@ -2,7 +2,7 @@ class Api::V1::BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @user = current_author
-    if current_author && @user.characters.length > 0
+    if current_author && !@user.characters.empty?
       @username = @user.username
       @characters = @user.characters.select { |c| c.board_id == @board.id }
     elsif current_author

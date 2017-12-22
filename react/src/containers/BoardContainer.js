@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import CharacterMenu from '../components/CharacterMenu';
+import CharacterMenu  from '../components/CharacterMenu';
+import BoardSidebar   from '../components/BoardSidebar';
 
-class BoardSidebar extends Component {
+class BoardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -57,27 +58,15 @@ class BoardSidebar extends Component {
     this.getBoardData();
   }
 
-  setBoardImage() {
-    let background = {
-      backgroundImage: "url(" + this.state.image + ")",
-      backgroundPosition: "center center",
-      backgroundSize: "100%",
-    }
-    return background;
-  }
-
   render() {
     return(
       <div className='grid-x' id='wrapper'>
-        <div className='cell large-4 medium-5 hide-for-small-only' id='board-sidebar'>
-          <div id='board-image' style={ this.setBoardImage() } />
-          <div className='sidebar-content'>
-            <h6>Welcome to</h6>
-            <Link to={`/boards/${this.state.boardId}`}><h2>{this.state.name}</h2></Link>
-            <hr />
-            <p>{this.state.description}</p>
-          </div>
-        </div>
+          <BoardSidebar
+            image={this.state.image}
+            boardId={this.state.boardId}
+            boardName={this.state.name}
+            boardDesc={this.state.description}
+          />
         <div className='cell large-8 medium-7'>
           <div className='grid-x'>
             <CharacterMenu
@@ -98,4 +87,4 @@ class BoardSidebar extends Component {
   }
 }
 
-export default BoardSidebar;
+export default BoardContainer;

@@ -6,7 +6,7 @@ class Api::V1::BoardsController < ApplicationController
 
     if current_author
       @username = current_author.username
-      if !current_author.characters.empty?
+      unless current_author.characters.empty?
         @characters = @user.characters.select { |c| c.board_id == @board.id }
       end
     end

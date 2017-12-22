@@ -2,16 +2,16 @@ class Api::V1::BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @user = current_author
-    if current_author && !@user.characters.empty?
+    @username = ''
+    @characters = [{ id: 0, name: '' }]
+
+    if current_author
       @username = @user.username
-      @characters = @user.characters.select { |c| c.board_id == @board.id }
-    elsif current_author
-      @username = @user.username
-      @characters = [{ id: 0, name: '' }]
-    else
-      @username = ''
-      @characters = [{ id: 0, name: '' }]
+      if !@user.characters.empty?
+        @characters = @user.characters.select { |c| c.board_id == @board.id }
+      end
     end
+
     render json: {
       boardData: @board,
       currentAuthor: @username,

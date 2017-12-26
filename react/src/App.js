@@ -5,6 +5,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import BoardContainer from './containers/BoardContainer';
 import ArcIndex       from './containers/ArcIndex';
 import ArcShow        from './containers/ArcShow';
+import PostWithQuill  from './containers/PostWithQuill';
 
 const App = (props) => {
   return(
@@ -13,6 +14,7 @@ const App = (props) => {
           <Route path='/boards/:board_id' component={BoardContainer}>
             <IndexRoute component={ArcIndex} />
             <Route path='arcs/:id' component={ArcShow} />
+            <Route path='arcs/:id/posts/new' component={PostWithQuill} />
           </Route>
         </Route>
     </Router>

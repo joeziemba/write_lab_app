@@ -6,6 +6,7 @@ import BoardContainer from './containers/BoardContainer';
 import ArcIndex       from './containers/ArcIndex';
 import ArcShow        from './containers/ArcShow';
 import PostWithQuill  from './containers/PostWithQuill';
+import CharacterForm  from './containers/CharacterForm';
 
 const App = (props) => {
   return(
@@ -15,6 +16,7 @@ const App = (props) => {
             <IndexRoute component={ArcIndex} />
             <Route path='arcs/:id' component={ArcShow} />
             <Route path='arcs/:id/posts/new' component={PostWithQuill} />
+            <Route path='characters/new' component={CharacterForm} />
           </Route>
         </Route>
     </Router>

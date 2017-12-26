@@ -1,14 +1,12 @@
 #character-menu {
-  padding: 20px;
+  padding: 20px 50px;
   background-color: #444;
   color: $light-gray;
 
   h4 {
     margin: 0;
-    line-height: 100%;
-    padding-top: 10px;
-    padding-right: 35px;
-    text-align: right;
+    line-height: 110%;
+    padding: 0.5rem;
   }
 
   select {

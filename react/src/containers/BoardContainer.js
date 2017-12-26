@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import CharacterMenu  from '../components/CharacterMenu';
 import BoardSidebar   from '../components/BoardSidebar';
 
@@ -17,6 +17,7 @@ class BoardContainer extends Component {
     }
     this.changeCharacter = this.changeCharacter.bind(this);
     this.renderChildren = this.renderChildren.bind(this);
+    this.fetchPost = this.fetchPost.bind(this);
   }
 
   // Component Methods
@@ -55,16 +56,52 @@ class BoardContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  processResponse(response) {
+    return new Promise((resolve, reject) => {
+      let func;
+      response.status < 400 ? func = resolve : func = reject;
+      response.json().then(data => func({
+        'status': response.status,
+        'statusText': response.statusText,
+        'data': data
+      }));
+    });
+  }
+
+  fetchPost(postPath, data, redirectPath) {
+    fetch(postPath, {
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => this.processResponse(response))
+    .then(body => {
+      if(postPath === '/api/v1/characters') {
+        this.setState({
+          currentCharacter: body.data
+        })
+      }
+      browserHistory.push(redirectPath);
+    })
+    .catch(response => {
+      this.setState({
+        errors: response.data.errors
+      });
+      let errorMessage = `${response.status} (${response.statusText})`;
+      console.error(`Error in fetch: ${errorMessage}`);
+    });
+  }
+
   renderChildren() {
-    let children = this.props.children
-    if(this.props.children.type.name === "PostWithQuill") {
-      children = React.Children.map(this.props.children, (child) => {
+    let children;
+    children = React.Children.map(this.props.children, (child) => {
         return React.cloneElement(child, {
           currentCharacterId: this.state.currentCharacter.id,
-          currentCharacterName: this.state.currentCharacter.name
+          currentCharacterName: this.state.currentCharacter.name,
+          fetchPost: this.fetchPost
         })
       })
-    }
     return children;
   }
 

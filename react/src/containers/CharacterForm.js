@@ -35,7 +35,7 @@ class CharacterForm extends Component {
     });
   }
 
-  // fetchPost should take 3 arguments:
+  // fetchPost(postPath, data, redirectPath) takes 3 arguments:
   //  - url to post to
   //  - variable of object to post (newChar/newPost/etc.)
   //  - url for redirect
@@ -46,25 +46,11 @@ class CharacterForm extends Component {
       name: this.state.characterName,
       board_id: this.props.params.board_id
     }
-    fetch(`/api/v1/characters`, {
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(newChar),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => this.processResponse(response))
-    .then(body => {
-      debugger;
-      browserHistory.push(`/boards/${this.props.params.board_id}`);
-    })
-    .catch(response => {
-      debugger;
-      this.setState({
-        errors: response.data.errors
-      });
-      let errorMessage = `${response.status} (${response.statusText})`;
-      console.error(`Error in fetch: ${errorMessage}`);
-    });
+    this.props.fetchPost(
+      '/api/v1/characters',
+      newChar,
+      `/boards/${this.props.params.board_id}`
+    )
   }
 
   render() {

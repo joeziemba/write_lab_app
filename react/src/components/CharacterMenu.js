@@ -18,7 +18,7 @@ const CharacterMenu = (props) => {
           <div className='cell large-3 medium-3'>
             <form name='CharacterChangeForm'>
               <select name='characters' onChange={props.changeCharacter}>
-                <option value={props.currentCharacterId}>{props.currentCharacterName}</option>
+                <option value='0'>Change Character</option>
                 {options}
               </select>
             </form>

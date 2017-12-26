@@ -22,19 +22,6 @@ class CharacterForm extends Component {
     })
   }
 
-  processResponse(response) {
-    return new Promise((resolve, reject) => {
-      let func;
-      debugger;
-      response.status < 400 ? func = resolve : func = reject;
-      response.json().then(data => func({
-        'status': response.status,
-        'statusText': response.statusText,
-        'data': data
-      }));
-    });
-  }
-
   // fetchPost(postPath, data, redirectPath) takes 3 arguments:
   //  - url to post to
   //  - variable of object to post (newChar/newPost/etc.)

@@ -59,6 +59,15 @@ class BoardContainer extends Component {
   }
 
   render() {
+    let children = this.props.children
+    if(this.props.children.type.name === "PostWithQuill") {
+      children = React.Children.map(this.props.children, (child) => {
+        return React.cloneElement(child, {
+          currentCharacterId: this.state.currentCharacter.id,
+          currentCharacterName: this.state.currentCharacter.name
+        })
+      })
+    }
     return(
       <div className='grid-x' id='wrapper'>
           <BoardSidebar
@@ -76,7 +85,7 @@ class BoardContainer extends Component {
           />
           <div className='grid-x'>
             <div className='cell large-12' id='main-content'>
-              {this.props.children}
+              {children}
             </div>
           </div>
         </div>

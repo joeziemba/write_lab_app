@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
+
 import PostTile from '../components/PostTile';
+
 var strftime = require('strftime');
 var strftimeEST = strftime.timezone('-0500');
 
@@ -68,6 +71,9 @@ class ArcShow extends Component {
         </div>
         <div>
           {posts}
+        </div>
+        <div>
+          <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.id}/posts/new`}>Add New Post</Link>
         </div>
       </div>
     )

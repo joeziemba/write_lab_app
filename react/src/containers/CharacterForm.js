@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import ReactQuill from 'react-quill';
 
-class PostWithQuill extends Component {
+class CharacterForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      text: '',
-      errors: []
+      characterName: '',
+      image: '',
+      errors:[]
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handlePost = this.handlePost.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({ text: value })
+  // Put your functions here
+  handleChange(event) {
+    let key = event.target.name
+    let value = event.target.value
+    this.setState({
+      [key]: value
+    })
   }
 
   processResponse(response) {
@@ -30,23 +35,27 @@ class PostWithQuill extends Component {
     });
   }
 
-  handlePost(e) {
-    e.preventDefault();
-    let newPost = {
-      character_id: this.props.currentCharacterId,
-      text: this.state.text,
-      arc_id: this.props.params.id
+  // fetchPost should take 3 arguments:
+  //  - url to post to
+  //  - variable of object to post (newChar/newPost/etc.)
+  //  - url for redirect
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let newChar = {
+      name: this.state.characterName,
+      board_id: this.props.params.board_id
     }
-    fetch(`/api/v1/posts`, {
+    fetch(`/api/v1/characters`, {
       credentials: 'same-origin',
       method: 'POST',
-      body: JSON.stringify(newPost),
+      body: JSON.stringify(newChar),
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => this.processResponse(response))
     .then(body => {
       debugger;
-      browserHistory.push(`/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`);
+      browserHistory.push(`/boards/${this.props.params.board_id}`);
     })
     .catch(response => {
       debugger;
@@ -59,20 +68,18 @@ class PostWithQuill extends Component {
   }
 
   render() {
+
     return(
       <div>
-        <ReactQuill
-          value={this.state.text}
-          onChange={this.handleChange}
-        />
-        <form name='new_post_form' onSubmit={this.handlePost}>
-          <input type='hidden' name='character_id' value={this.props.currentCharacterId} />
-          <input type='hidden' name='arc_id' value={this.props.params.id} />
-          <input type='submit' value='Post' />
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor='characterName'>Character Name:
+            <input type='text' name="characterName" value={this.state.characterName} onChange={this.handleChange}/>
+          </label>
+          <input type='submit' value='Create Character' />
         </form>
       </div>
     )
   }
 }
 
-export default PostWithQuill;
+export default CharacterForm;

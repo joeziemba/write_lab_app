@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
       resources :arcs, only: [:show]
       resources :posts, only: [:create]
+      resources :characters, only: [:create]
     end
   end
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     resources :arcs, only: [:show] do
       resources :posts, only: [:new]
     end
+    resources :characters, only: [:new]
   end
 
 

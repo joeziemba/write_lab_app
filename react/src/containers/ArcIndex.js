@@ -53,7 +53,7 @@ class ArcIndex extends Component {
       })
     }
     return(
-      <div id='arc-container'>
+      <div>
         {arcList}
       </div>
     )

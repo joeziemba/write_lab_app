@@ -68,7 +68,7 @@ class ArcShow extends Component {
 
   render() {
     return(
-      <div id='arc-container'>
+      <div>
         <div id='arc-header'>
           <h3>{this.state.arcData.title}</h3>
           <div>

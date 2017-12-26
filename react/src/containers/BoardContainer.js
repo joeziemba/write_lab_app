@@ -84,6 +84,7 @@ class BoardContainer extends Component {
           />
         <div className='cell large-8 medium-7'>
           <CharacterMenu
+            boardId={this.state.boardId}
             currentCharacterId={this.state.currentCharacter.id}
             currentCharacterName={this.state.currentCharacter.name}
             characters={this.state.characters}

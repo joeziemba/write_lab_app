@@ -17,19 +17,6 @@ class PostWithQuill extends Component {
     this.setState({ text: value })
   }
 
-  processResponse(response) {
-    return new Promise((resolve, reject) => {
-      let func;
-      debugger;
-      response.status < 400 ? func = resolve : func = reject;
-      response.json().then(data => func({
-        'status': response.status,
-        'statusText': response.statusText,
-        'data': data
-      }));
-    });
-  }
-
   handlePost(e) {
     e.preventDefault();
     let newPost = {
@@ -37,25 +24,11 @@ class PostWithQuill extends Component {
       text: this.state.text,
       arc_id: this.props.params.id
     }
-    fetch(`/api/v1/posts`, {
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(newPost),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => this.processResponse(response))
-    .then(body => {
-      debugger;
-      browserHistory.push(`/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`);
-    })
-    .catch(response => {
-      debugger;
-      this.setState({
-        errors: response.data.errors
-      });
-      let errorMessage = `${response.status} (${response.statusText})`;
-      console.error(`Error in fetch: ${errorMessage}`);
-    });
+    this.props.fetchPost(
+      '/api/v1/posts',
+      newPost,
+      `/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`
+    )
   }
 
   render() {

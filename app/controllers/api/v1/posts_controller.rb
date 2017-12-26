@@ -2,12 +2,12 @@ class Api::V1::PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    newPost = Post.new(post_params)
-    newPost.content = params['text']
-    if newPost.save
-      render json: newPost
+    new_post = Post.new(post_params)
+    new_post.content = params['text']
+    if new_post.save
+      render json: new_post
     else
-      render json: { errors: newPost.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: new_post.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

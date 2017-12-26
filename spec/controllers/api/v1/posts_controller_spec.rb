@@ -15,7 +15,7 @@ describe Api::V1::PostsController, type: :controller do
 
     it 'should return the json of a new Post' do
       body = JSON.parse(subject.body)
-      
+
       expect(body['character_id']).to eq(testChar.id)
       expect(body['content']).to eq('Test Post')
     end
@@ -29,5 +29,4 @@ describe Api::V1::PostsController, type: :controller do
       expect(body['errors']).to include("Content can't be blank")
     end
   end
-
 end

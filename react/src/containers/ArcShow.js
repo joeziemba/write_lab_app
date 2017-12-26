@@ -14,6 +14,8 @@ class ArcShow extends Component {
       creator: '',
       posts: []
     }
+    this.getPosts = this.getPosts.bind(this);
+    this.mapPosts = this.mapPosts.bind(this);
   }
 
   getPosts() {
@@ -49,7 +51,7 @@ class ArcShow extends Component {
     this.getPosts();
   }
 
-  render() {
+  mapPosts() {
     let posts = this.state.posts.map(post => {
       return(
         <PostTile
@@ -61,6 +63,10 @@ class ArcShow extends Component {
         />
       )
     })
+    return posts;
+  }
+
+  render() {
     return(
       <div id='arc-container'>
         <div id='arc-header'>
@@ -70,7 +76,7 @@ class ArcShow extends Component {
           </div>
         </div>
         <div>
-          {posts}
+          {this.mapPosts()}
         </div>
         <div>
           <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.id}/posts/new`}>Add New Post</Link>

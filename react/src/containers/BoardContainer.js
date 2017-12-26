@@ -16,9 +16,10 @@ class BoardContainer extends Component {
       currentCharacter: {}
     }
     this.changeCharacter = this.changeCharacter.bind(this);
+    this.renderChildren = this.renderChildren.bind(this);
   }
 
-  // Put your functions here
+  // Component Methods
 
   changeCharacter(event) {
     let newChar = this.state.characters.filter( c => c.id == event.target.value)
@@ -54,11 +55,7 @@ class BoardContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  componentDidMount() {
-    this.getBoardData();
-  }
-
-  render() {
+  renderChildren() {
     let children = this.props.children
     if(this.props.children.type.name === "PostWithQuill") {
       children = React.Children.map(this.props.children, (child) => {
@@ -68,6 +65,15 @@ class BoardContainer extends Component {
         })
       })
     }
+    return children;
+  }
+
+  // Lifecycle Methods
+  componentDidMount() {
+    this.getBoardData();
+  }
+
+  render() {
     return(
       <div className='grid-x' id='wrapper'>
           <BoardSidebar
@@ -85,7 +91,7 @@ class BoardContainer extends Component {
           />
           <div className='grid-x'>
             <div className='cell large-12' id='main-content'>
-              {children}
+              {this.renderChildren()}
             </div>
           </div>
         </div>

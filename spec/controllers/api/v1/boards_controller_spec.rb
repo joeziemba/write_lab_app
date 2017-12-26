@@ -62,7 +62,7 @@ describe Api::V1::BoardsController, type: :controller do
   end
 
   it 'should return an array with empty characters if user has no characters for that board' do
-    author = Author.create(username: 'justmyrealname', email:'test@test.com', password: 'password')
+    author = Author.create(username: 'justmyrealname', email: 'test@test.com', password: 'password')
     sign_in(author)
     get :show, params: { id: testBoard.id }
     data = JSON.parse(response.body)

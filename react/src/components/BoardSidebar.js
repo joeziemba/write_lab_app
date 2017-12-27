@@ -8,7 +8,7 @@ const BoardSidebar = (props) => {
     backgroundSize: "100%",
   }
   return(
-    <div className='cell large-4 medium-5 hide-for-small-only' id='board-sidebar'>
+    <div className='cell large-5 medium-5 hide-for-small-only' id='board-sidebar'>
       <div id='board-image' style={ background } />
       <div className='sidebar-content'>
         <h6>Welcome to</h6>

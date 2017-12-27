@@ -78,9 +78,7 @@ class BoardContainer extends Component {
     .then(response => this.processResponse(response))
     .then(body => {
       if(postPath === '/api/v1/characters') {
-        this.setState({
-          currentCharacter: body.data
-        })
+        this.setState({ currentCharacter: body.data })
       }
       if(postPath == '/api/v1/arcs') {
         debugger;

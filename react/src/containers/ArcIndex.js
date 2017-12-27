@@ -8,6 +8,7 @@ class ArcIndex extends Component {
       arcs: []
     }
     this.getThreads = this.getThreads.bind(this);
+    this.showArcs = this.showArcs.bind(this);
   }
 
   getThreads() {
@@ -36,7 +37,7 @@ class ArcIndex extends Component {
     this.getThreads();
   }
 
-  render() {
+  showArcs() {
     let arcList = "Looks like there's nothing here!"
     if(this.state.arcs.length > 0) {
       arcList = this.state.arcs.map(a => {
@@ -52,9 +53,13 @@ class ArcIndex extends Component {
         )
       })
     }
+    return arcList;
+  }
+
+  render() {
     return(
       <div>
-        {arcList}
+        {this.showArcs()}
         <div  className='grid-x'>
           <a href={`/boards/${this.props.params.board_id}/arcs/new`} >
           <div id='new-arc-tile' className='large-12 medium-12 small-12'>

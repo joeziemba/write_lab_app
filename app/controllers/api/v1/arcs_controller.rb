@@ -13,11 +13,7 @@ class Api::V1::ArcsController < ApplicationController
 
   def create
     arc = Arc.new(arc_params)
-    post = Post.new(
-      content: params['text'],
-      character: arc.character,
-      arc: arc
-    )
+    post = Post.new(content: params['text'], character: arc.character, arc: arc)
     if arc.valid? && post.valid?
       arc.save
       post.save

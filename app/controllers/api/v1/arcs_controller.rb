@@ -19,7 +19,7 @@ class Api::V1::ArcsController < ApplicationController
       post.save
       render json: { arc: arc, post: post }
     else
-      render json: { errors: new_post.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: arc.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

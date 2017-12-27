@@ -62,4 +62,30 @@ describe Api::V1::ArcsController, type: :controller do
       expect(data['posts'].length).to eq 2
     end
   end
+
+  describe 'POST#create' do
+    subject { post :create, params: { arc: { title: 'Storytime', board_id: testBoard.id, character_id: testChar.id }, text: 'Test Post' } }
+
+    it 'should return a json response' do
+      expect(subject.status).to eq(200)
+      expect(subject.header['Content-Type']).to include 'application/json'
+    end
+
+    it 'should return the json of a new Arc and Post' do
+      body = JSON.parse(subject.body)
+
+      expect(body['arc']['title']).to eq('Storytime')
+      expect(body['arc']['character_id']).to eq(testChar.id)
+    end
+
+    it 'should return the json with errors if unseccessful' do
+      post :create, params: { arc: { title: '', board_id: '', character_id: '' } }
+      body = JSON.parse(response.body)
+
+      expect(body['errors']).to include('Character must exist')
+      expect(body['errors']).to include('Board must exist')
+      expect(body['errors']).to include("Title can't be blank")
+
+    end
+  end
 end

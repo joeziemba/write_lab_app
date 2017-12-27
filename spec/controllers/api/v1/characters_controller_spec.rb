@@ -3,8 +3,7 @@ require 'rails_helper'
 describe Api::V1::CharactersController, type: :controller do
   describe 'POST#create' do
     let!(:testBoard) { create(:board) }
-    let!(:author) { create(:author, username: 'justmyrealname', email: 'just@myreal.name')}
-
+    let!(:author) { create(:author, username: 'justmyrealname', email: 'just@myreal.name') }
 
     subject { post :create, params: { character: { name: 'Mace Windu', board_id: testBoard.id } } }
 

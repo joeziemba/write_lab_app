@@ -7,7 +7,7 @@ class Api::V1::CharactersController < ApplicationController
     if character.save
       render json: character
     else
-      render json: { errors: new_post.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: character.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

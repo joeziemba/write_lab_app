@@ -85,7 +85,6 @@ describe Api::V1::ArcsController, type: :controller do
       expect(body['errors']).to include('Character must exist')
       expect(body['errors']).to include('Board must exist')
       expect(body['errors']).to include("Title can't be blank")
-
     end
   end
 end

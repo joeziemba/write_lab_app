@@ -78,9 +78,11 @@ class BoardContainer extends Component {
     .then(response => this.processResponse(response))
     .then(body => {
       if(postPath === '/api/v1/characters') {
-        this.setState({
-          currentCharacter: body.data
-        })
+        this.setState({ currentCharacter: body.data })
+      }
+      if(postPath == '/api/v1/arcs') {
+        debugger;
+        redirectPath = redirectPath + '/arcs/' + body.data.arc.id
       }
       browserHistory.push(redirectPath);
     })
@@ -119,7 +121,7 @@ class BoardContainer extends Component {
             boardName={this.state.name}
             boardDesc={this.state.description}
           />
-        <div className='cell large-8 medium-7'>
+        <div className='cell large-7 medium-7'>
           <CharacterMenu
             boardId={this.state.boardId}
             currentCharacterId={this.state.currentCharacter.id}

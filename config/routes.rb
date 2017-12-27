@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :boards, only: [:show] do
         resources :arcs, only: [:index]
       end
-      resources :arcs, only: [:show]
+      resources :arcs, only: [:show, :create]
       resources :posts, only: [:create]
       resources :characters, only: [:create]
     end
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'application#home'
 
   resources :boards, only: [:index, :show] do
-    resources :arcs, only: [:show] do
+    resources :arcs, only: [:show, :new] do
       resources :posts, only: [:new]
     end
     resources :characters, only: [:new]

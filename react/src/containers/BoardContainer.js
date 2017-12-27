@@ -82,6 +82,10 @@ class BoardContainer extends Component {
           currentCharacter: body.data
         })
       }
+      if(postPath == '/api/v1/arcs') {
+        debugger;
+        redirectPath = redirectPath + '/arcs/' + body.data.arc.id
+      }
       browserHistory.push(redirectPath);
     })
     .catch(response => {

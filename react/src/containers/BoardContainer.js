@@ -68,20 +68,19 @@ class BoardContainer extends Component {
     });
   }
 
-  fetchPost(postPath, data, redirectPath) {
+  fetchPost(postPath, method, data, redirectPath) {
     fetch(postPath, {
       credentials: 'same-origin',
-      method: 'POST',
+      method: method,
       body: JSON.stringify(data),
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => this.processResponse(response))
     .then(body => {
-      if(postPath === '/api/v1/characters') {
+      if(postPath.includes('/api/v1/characters')) {
         this.setState({ currentCharacter: body.data })
       }
       if(postPath == '/api/v1/arcs') {
-        debugger;
         redirectPath = redirectPath + '/arcs/' + body.data.arc.id
       }
       browserHistory.push(redirectPath);

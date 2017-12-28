@@ -18,7 +18,6 @@ class Api::V1::CharactersController < ApplicationController
 
   def update
     character = Character.update(params[:id], char_params)
-    binding.pry
     if character.save
       render json: character
     else

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import TextField from '../components/TextField';
 
 class EditCharacter extends Component {
   constructor(props) {
@@ -79,19 +80,31 @@ class EditCharacter extends Component {
       <div>
         <h4>Edit Character</h4>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='name'>Character Name:
-            <input type='text' name="name" value={this.state.name} onChange={this.handleChange}/>
-          </label>
-          <label htmlFor='avatar_url'>Avatar:<br />
-            <img id='edit-avatar' src={this.state.avatar_url} />
-            <input type='text' name='avatar_url' value={this.state.avatar_url} onChange={this.handleChange} />
-          </label>
-          <label htmlFor='age'>Age:
-            <input type='text' name='age' value={this.state.age} onChange={this.handleChange} />
-          </label>
-          <label htmlFor='backtory'>Backstory:
-            <textarea name='backstory' value={this.state.backstory} onChange={this.handleChange} />
-          </label>
+          <TextField
+            fieldName='name'
+            label='Character Name:'
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <img id='edit-avatar' src={this.state.avatar_url} />
+          <TextField
+            fieldName='avatar_url'
+            label='Avatar:'
+            value={this.state.avatar_url}
+            onChange={this.handleChange}
+          />
+          <TextField
+            fieldName='age'
+            label='Age:'
+            value={this.state.age}
+            onChange={this.handleChange}
+          />
+          <TextField
+            fieldName='backstory'
+            label='Backstory:'
+            value={this.state.backstory}
+            onChange={this.handleChange}
+          />
           <input type='submit' value='Save Changes' />
         </form>
       </div>

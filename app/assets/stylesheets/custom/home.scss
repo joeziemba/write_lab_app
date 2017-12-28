@@ -1,9 +1,6 @@
 #billboard {
   text-align: center;
   height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d');
-  background-size: cover;
-  background-position: center center;
 
   h1 {
     color: #fff;
@@ -11,11 +8,16 @@
   }
 }
 
+.book-background {
+  background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d');
+  background-size: cover;
+  background-position: center center;
+}
+
 .color-overlay {
   height: 100%;
   width: 100%;
   background: rgba(0,0,0,0.7);
-  padding-top: 10%;
 }
 
 .form-container {

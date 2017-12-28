@@ -22,7 +22,7 @@ class CharacterForm extends Component {
     })
   }
 
-  // fetchPost(postPath, data, redirectPath) takes 3 arguments:
+  // fetchPost(postPath, method, data, redirectPath) takes 3 arguments:
   //  - url to post to
   //  - variable of object to post (newChar/newPost/etc.)
   //  - url for redirect
@@ -35,6 +35,7 @@ class CharacterForm extends Component {
     }
     this.props.fetchPost(
       '/api/v1/characters',
+      'POST',
       newChar,
       `/boards/${this.props.params.board_id}`
     )

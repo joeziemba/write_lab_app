@@ -8,6 +8,7 @@ import ArcNew         from './containers/ArcNew';
 import ArcShow        from './containers/ArcShow';
 import PostWithQuill  from './containers/PostWithQuill';
 import CharacterForm  from './containers/CharacterForm';
+import EditCharacter  from './containers/EditCharacter';
 
 const App = (props) => {
   return(
@@ -19,6 +20,7 @@ const App = (props) => {
             <Route path='arcs/:id' component={ArcShow} />
             <Route path='arcs/:id/posts/new' component={PostWithQuill} />
             <Route path='characters/new' component={CharacterForm} />
+            <Route path='characters/:id/edit' component={EditCharacter} />
           </Route>
         </Route>
     </Router>

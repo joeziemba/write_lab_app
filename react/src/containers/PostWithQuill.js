@@ -26,6 +26,7 @@ class PostWithQuill extends Component {
     }
     this.props.fetchPost(
       '/api/v1/posts',
+      'POST',
       newPost,
       `/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`
     )

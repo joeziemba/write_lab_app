@@ -8,16 +8,21 @@ const CharacterMenu = (props) => {
       <option key={character.id} value={character.id}>{character.name}</option>
     )
   })
+  let background = {
+    backgroundImage: "url(" + props.currentCharacterImage + ")",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+  }
   return(
     <div className='grid-x'>
       <div className='cell large-12' id='character-menu'>
         <div className='grid-x'>
           <div className='cell large-6 medium-12 char-menu-padding'>
-            <h4>Character: {props.currentCharacterName}</h4>
+            <div id='character-image' style={ background } /><h4>{props.currentCharacterName}</h4><a href={`/boards/${props.boardId}/characters/new`} className='util-button'><i className="fas fa-edit"></i> Edit</a>
           </div>
           <div className='cell large-4 medium-10 small-10'>
             <form name='CharacterChangeForm'>
-              <select name='characters' onChange={props.changeCharacter}>
+              <select name='characters' onChange={props.changeCharacter} className='top-margin-10'>
                 <option value='0'>Change Character</option>
                 {options}
               </select>

@@ -126,6 +126,7 @@ class BoardContainer extends Component {
             boardId={this.state.boardId}
             currentCharacterId={this.state.currentCharacter.id}
             currentCharacterName={this.state.currentCharacter.name}
+            currentCharacterImage={this.state.currentCharacter.avatar_url}
             characters={this.state.characters}
             changeCharacter={this.changeCharacter}
           />

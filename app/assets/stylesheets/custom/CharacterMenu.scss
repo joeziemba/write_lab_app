@@ -5,22 +5,50 @@
 
   h4 {
     margin: 0;
-    line-height: 110%;
+    line-height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 6px;
+  }
+
+  form {
+    height: 100%;
   }
 
   select {
     border-radius: 0px;
     border: none;
+    margin-bottom: 0;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
-    margin: 0;
     background-color: #444;
     color: $light-gray;
     font-family: 'Sorts Mill Goudy';
     font-size: 20px;
+    height: 45px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  i {
+    margin-top: 12px;
   }
 }
 
 .char-menu-padding {
   padding: 0.5rem;
+}
+
+#character-image {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.top-margin-10 {
+  margin-top: 10px;
 }

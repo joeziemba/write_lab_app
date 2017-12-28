@@ -21,3 +21,19 @@ a {
 .right {
   text-align: right;
 }
+
+.util-button {
+  background: transparent;
+  padding: 3px 6px;
+  font-size: 10px;
+  margin-left: 8px;
+  border: 1px solid $light-gray;
+  opacity: 0.3;
+  border-radius: 2px;
+  transition: opacity 0.1s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+    color: $light-gray;
+  }
+}

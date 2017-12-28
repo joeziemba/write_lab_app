@@ -30,7 +30,7 @@
                 <div class="profile-photo" style='background-image: url('');'></div> <%= "#{current_author.username}" %>
               </a>
             </li>
-            <li><%= link_to "Sign Out", destroy_author_session_path, method: :delete, class: 'util-button' %></li>
+            <li><%= link_to "Sign Out", destroy_author_session_path, method: :delete %></li>
             <% end %>
           </ul>
         </div>

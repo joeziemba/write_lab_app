@@ -44,9 +44,12 @@ class ArcNew extends Component {
   render() {
     return(
       <div>
+        <div id='arc-header'>
+          <h3>Create a New Arc</h3>
+        </div>
         <form name='newArcForm' onSubmit={this.handlePost}>
-          <label htmlFor='arcTitle'>Arc Title:
-            <input name='arcTitle' type='text' onChange={this.handleTitleChange} value={this.state.arcTitle} />
+          <label htmlFor='arcTitle'>
+            <input id='arc-title-field' name='arcTitle' type='text' placeholder='Arc Title' onChange={this.handleTitleChange} value={this.state.arcTitle} />
           </label>
           <ReactQuill
             value={this.state.text}

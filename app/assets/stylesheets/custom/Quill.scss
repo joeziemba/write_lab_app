@@ -1,0 +1,36 @@
+#editor-container {
+  height: 300px;
+}
+
+.ql-container.ql-snow {
+  border: none;
+  margin-bottom: 30px;
+  height: 300px;
+  background-color: #efefef;
+
+}
+
+.ql-editor {
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+}
+
+.ql-toolbar.ql-snow {
+  border: none;
+  background-color: #444;
+  color: $light-gray;
+}
+
+.ql-snow .ql-stroke {
+  stroke: $light-gray;
+}
+
+.ql-snow .ql-picker {
+  color: $light-gray;
+}
+.ql-snow .ql-fill {
+  fill: $light-gray;
+}
+
+.quill {
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}

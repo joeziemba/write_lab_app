@@ -17,7 +17,9 @@
     <header class=''>
       <div class='top-bar'>
         <div class="top-bar-left logo">
-          <a href='/'>WriteLab<span>BETA</span></a>
+          <div class="logo">
+            <a href='/'>WriteLab<span>BETA</span></a>
+          </div>
         </div>
         <div class="top-bar-right">
           <ul class='menu'>
@@ -25,21 +27,18 @@
             <li><%= link_to "Sign In", new_author_session_path %></li>
             <li><%= link_to "Sign Up", new_author_registration_path %></li>
             <% else %>
-            <li>
+            <li class='menu-highlight hover-fade'><a href='/boards/new' >Create a Board</a></li>
+            <li class='hover-fade'>
               <a href='<%= edit_author_registration_path %>' >
                 <div class="profile-photo" style='background-image: url('');'></div> <%= "#{current_author.username}" %>
               </a>
             </li>
-            <li><%= link_to "Sign Out", destroy_author_session_path, method: :delete %></li>
+            <li class='hover-fade'><%= link_to "Sign Out", destroy_author_session_path, method: :delete %></li>
             <% end %>
           </ul>
         </div>
       </div>
     </header>
-    <div class="flash">
-      <span class="notice"><%= notice %></span>
-      <span class="alert"><%= alert %></span>
-    </div>
     <%= yield %>
   </body>
 </html>

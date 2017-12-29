@@ -1,13 +1,31 @@
+@import 'vars';
+@import 'ArcIndex';
+@import 'ArcNew';
+@import 'ArcShow';
+@import 'ArcTile';
+@import 'BoardIndex';
+@import 'BoardSidebar';
+@import 'CharacterMenu';
+@import 'EditCharacter';
+@import 'home';
+@import 'PostTile';
+@import 'Quill';
+@import 'TopBar';
+
+
+
 html, body {
-  height: 100%;
   background: #eee;
+}
+
+header {
 }
 
 a {
   color: inherit;
 
   &:hover {
-    color: $secondary-color;
+    color: $primary-color;
   }
 }
 
@@ -16,7 +34,8 @@ a {
 }
 
 #wrapper {
-  background-color: $medium-gray;
+  background-color: $light-gray;
+  height: 100%;
 }
 
 .center {
@@ -45,4 +64,21 @@ a {
 
 .center {
   text-align: center;
+}
+
+.button-margin {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+.hover-fade {
+  transition: 0.2s all ease-in-out;
+}
+
+.browser-height {
+  min-height: 100vh !important;
 }

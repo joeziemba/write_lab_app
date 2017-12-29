@@ -5,7 +5,13 @@
   h1 {
     color: #fff;
     font-family: 'Lato';
-    margin-top: 100px;
+    margin-top: 80px;
+  }
+
+  h3 {
+    color: #fff;
+    font-family: 'Lato';
+    margin-bottom: 30px;
   }
 }
 
@@ -23,15 +29,23 @@
 
 .form-container {
   background: #fff;
+  margin-top: 100px;
   border-radius: 2px;
   padding: 26px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
-  h1 {
+  h2 {
     color: black !important;
+    font-family: 'Lato';
   }
 
   em {
     font-size: 10px;
   }
+}
+
+.scroll-callout {
+  color: rgba(255,255,255,0.6);
+  display: inline-block;
+  margin: 50px auto;
 }

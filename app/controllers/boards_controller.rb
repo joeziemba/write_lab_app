@@ -9,4 +9,12 @@ class BoardsController < ApplicationController
     # Should render components from react with API
     render :index
   end
+
+  def new
+    render :index
+  end
+
+  def edit
+    render :index
+  end
 end

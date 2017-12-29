@@ -8,7 +8,7 @@ const BoardTile = (props) => {
     backgroundSize: "cover",
   }
   return(
-    <div className='cell medium-10 large-9 xlarge-5 xxlarge-3 board-tile'>
+    <div className='cell medium-10 large-9 xlarge-5 board-tile'>
       <div className='grid-x full-height' >
         <div className='cell large-4 medium-4 board-tile-image' style={ background }>
         </div>

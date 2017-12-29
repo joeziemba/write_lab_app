@@ -1,8 +1,6 @@
 #board-sidebar {
   background: $light-gray;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  z-index: 1;
-  min-height: 100vh;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 
   h2 {
     text-align: center;
@@ -29,4 +27,7 @@
 
 .sidebar-content {
   padding: 20px;
+  @include breakpoint(xlarge) {
+    padding: 20px 60px;
+  }
 }

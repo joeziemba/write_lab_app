@@ -39,13 +39,13 @@ describe Api::V1::BoardsController, type: :controller do
     expect(data['characters'][0]['name']).to eq('')
   end
 
-  it "should return the user's username as currentAuthor when logged in" do
+  it "should return the user's id as currentAuthor when logged in" do
     author = testBoard.author
     sign_in(author)
     get :show, params: { id: testBoard.id }
     data = JSON.parse(response.body)
 
-    expect(data['currentAuthor']).to eq('joeziemba')
+    expect(data['currentAuthor']).to eq(author.id)
   end
 
   it 'should return an array of the users characters for the specified board' do

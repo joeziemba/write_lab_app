@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const BoardTile = (props) => {
   let background = {
@@ -7,14 +8,14 @@ const BoardTile = (props) => {
     backgroundSize: "cover",
   }
   return(
-    <div className='cell large-6 board-tile'>
+    <div className='cell medium-10 large-9 xlarge-5 xxlarge-3 board-tile'>
       <div className='grid-x full-height' >
-        <div className='cell large-4 medium-12 board-tile-image' style={ background }>
+        <div className='cell large-4 medium-4 board-tile-image' style={ background }>
         </div>
-        <div className='cell large-8 medium-12 board-tile-content'>
+        <div className='cell large-8 medium-8 board-tile-content'>
           <div className='grid-x'>
             <div className='cell large-12'>
-              <h3>{props.name}</h3>
+              <Link to={`/boards/${props.id}`}><h3>{props.name}</h3></Link>
             </div>
           </div>
           <div className='grid-x'>

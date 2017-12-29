@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import BoardTile from '../components/BoardTile'
+import BoardTile        from '../components/BoardTile'
+import BoardIndexHeader from '../components/BoardIndexHeader'
 
 class BoardIndex extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class BoardIndex extends Component {
       return(
         <BoardTile
           key={board.id}
+          id={board.id}
           name={board.name}
           description={board.description}
           image={board.image}
@@ -50,14 +52,7 @@ class BoardIndex extends Component {
   render() {
     return(
       <div>
-        <div className='grid-x book-background'>
-          <div className='color-overlay'>
-            <div className='cell large-12' id='index-header'>
-              <h1 className='center'>Boards</h1>
-            </div>
-          </div>
-        </div>
-        <div id='board-index-container' className='grid-x'>
+        <div id='board-index-container' className='grid-x align-center'>
           {this.showBoards()}
         </div>
       </div>

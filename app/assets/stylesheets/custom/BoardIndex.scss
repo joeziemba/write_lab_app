@@ -7,15 +7,32 @@
 
 #board-index-container {
   padding: 60px;
-  background: #eee;
+  background: #efefef;
 }
 
 .board-tile {
-  background: $medium-gray;
+  background: #fefefe;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,0,0,0.15);
+
+  @include breakpoint(xlarge) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+
 }
 
 .board-tile-content {
   padding: 16px;
+
+  @include breakpoint(xlarge) {
+    font-size: 13px;
+  }
+
+  @include breakpoint(small only) {
+    font-size: 13px;
+  }
 }
 
 .full-height {

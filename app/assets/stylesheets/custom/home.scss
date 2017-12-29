@@ -1,0 +1,37 @@
+#billboard {
+  text-align: center;
+  height: 400px;
+
+  h1 {
+    color: #fff;
+    font-family: 'Lato';
+    margin-top: 100px;
+  }
+}
+
+.book-background {
+  background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d');
+  background-size: cover;
+  background-position: center center;
+}
+
+.color-overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.form-container {
+  background: #fff;
+  border-radius: 2px;
+  padding: 26px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+  h1 {
+    color: black !important;
+  }
+
+  em {
+    font-size: 10px;
+  }
+}

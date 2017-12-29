@@ -1,0 +1,44 @@
+#index-header {
+  text-align: center;
+  padding: 60px;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#board-index-container {
+  padding: 60px;
+  background: #efefef;
+}
+
+.board-tile {
+  background: #fefefe;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,0,0,0.15);
+
+  @include breakpoint(xlarge) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+
+}
+
+.board-tile-content {
+  padding: 16px;
+
+  @include breakpoint(xlarge) {
+    font-size: 13px;
+  }
+
+  @include breakpoint(small only) {
+    font-size: 13px;
+  }
+}
+
+.full-height {
+  height: 100%;
+}
+
+.board-tile-image {
+  padding-top: 30%;
+}

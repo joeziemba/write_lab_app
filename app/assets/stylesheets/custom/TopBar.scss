@@ -14,6 +14,14 @@
       font-size: 12px;
     }
   }
+
+  li.menu-highlight {
+    background-color: $prime-blue;
+
+    &:hover {
+      background-color: $prime-blue-dark;
+    }
+  }
 }
 
 .logo {

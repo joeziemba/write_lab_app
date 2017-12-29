@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # API ENDPOINT ROUTES
   namespace :api do
     namespace :v1 do
-      resources :boards, only: [:index, :show] do
+      resources :boards, only: [:index, :show, :create, :update] do
         resources :arcs, only: [:index]
       end
       resources :arcs, only: [:show, :create]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # APPLICATION ROUTES
   root 'application#home'
 
-  resources :boards, only: [:index, :show] do
+  resources :boards, only: [:index, :show, :new, :edit] do
     resources :arcs, only: [:show, :new] do
       resources :posts, only: [:new]
     end

@@ -78,3 +78,7 @@ a {
 .hover-fade {
   transition: 0.2s all ease-in-out;
 }
+
+.browser-height {
+  min-height: 100vh !important;
+}

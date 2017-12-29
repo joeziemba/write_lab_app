@@ -1,4 +1,6 @@
 class Api::V1::BoardsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
+
   def index
     @boards = Board.all
     render json: @boards
@@ -6,11 +8,11 @@ class Api::V1::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @username = ''
+    @current_author_id = ''
     @characters = [{ id: 0, name: '' }]
 
     if current_author
-      @username = current_author.username
+      @current_author_id = current_author.id
       unless current_author.characters.empty?
         @characters = current_author.characters.select { |c| c.board_id == @board.id }
       end
@@ -18,8 +20,24 @@ class Api::V1::BoardsController < ApplicationController
 
     render json: {
       boardData: @board,
-      currentAuthor: @username,
+      currentAuthor: @current_author_id,
       characters: @characters
     }
+  end
+
+  def create
+    board = Board.new(board_params)
+    board.author = current_author
+    if board.save
+      render json: board
+    else
+      render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def board_params
+    params.require(:board).permit(:name, :description, :image)
   end
 end

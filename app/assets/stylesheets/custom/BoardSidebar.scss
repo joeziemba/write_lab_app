@@ -30,4 +30,14 @@
   @include breakpoint(xlarge) {
     padding: 20px 60px;
   }
+
+  .util-button {
+    border-color: $dark-gray;
+    position: absolute;
+
+    &:hover {
+      color: black;
+      border-color: black;
+    }
+  }
 }

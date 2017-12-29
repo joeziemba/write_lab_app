@@ -5,6 +5,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 // Local Component Imports
 import Home             from './containers/Home';
 import BoardIndexHeader from './components/BoardIndexHeader';
+import BoardForm     from './containers/BoardForm'
 import BoardContainer   from './containers/BoardContainer';
 import ArcIndex         from './containers/ArcIndex';
 import ArcNew           from './containers/ArcNew';
@@ -18,6 +19,8 @@ const App = (props) => {
     <Router history={browserHistory}>
       <Route path='/' component={Home} />
       <Route path='/boards' component={BoardIndexHeader} />
+      <Route path='/boards/new' component={BoardForm} />
+      <Route path='/boards/:board_id/edit' component={BoardForm} />
       <Route path='/boards/:board_id' component={BoardContainer}>
         <IndexRoute component={ArcIndex} />
         <Route path='arcs/new' component={ArcNew} />

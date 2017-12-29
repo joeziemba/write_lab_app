@@ -10,7 +10,8 @@ class BoardContainer extends Component {
       name: '',
       description: '',
       image: '',
-      boardId: '',
+      boardId: '0',
+      boardAuthorId: '',
       currentAuthor: {},
       characters: [],
       currentCharacter: {}
@@ -48,6 +49,7 @@ class BoardContainer extends Component {
        description: body.boardData.description,
        image: body.boardData.image,
        boardId: body.boardData.id,
+       boardAuthorId: body.boardData.author_id,
        currentAuthor: body.currentAuthor,
        characters: body.characters,
        currentCharacter: body.characters[0]
@@ -119,6 +121,8 @@ class BoardContainer extends Component {
             boardId={this.state.boardId}
             boardName={this.state.name}
             boardDesc={this.state.description}
+            boardAuthorId={this.state.boardAuthorId}
+            currentAuthor={this.state.currentAuthor}
           />
         <div className='cell large-7 medium-7'>
           <CharacterMenu

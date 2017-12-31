@@ -36,6 +36,7 @@ class ArcNew extends Component {
     }
     this.props.fetchPost(
       '/api/v1/arcs',
+      'POST',
       newArc,
       `/boards/${this.props.params.board_id}`
     )

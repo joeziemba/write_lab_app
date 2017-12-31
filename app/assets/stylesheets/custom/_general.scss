@@ -46,19 +46,37 @@ a {
   text-align: right;
 }
 
-.util-button {
+@mixin util-button {
   background: transparent;
   padding: 3px 6px;
   font-size: 10px;
   margin-left: 8px;
-  border: 1px solid $light-gray;
-  opacity: 0.3;
+  border: 1px solid $medium-gray;
+  color: $medium-gray;
   border-radius: 2px;
   transition: opacity 0.1s ease-in-out;
+  height: auto;
+  width: auto;
 
   &:hover {
-    opacity: 0.6;
+    border: 1px solid $light-gray;
     color: $light-gray;
+  }
+}
+
+.util-button {
+  @include util-button;
+}
+
+.util-button-dark {
+  @include util-button;
+  border: 1px solid $dark-gray;
+  color: $dark-gray;
+
+  &:hover {
+    color: #222;
+    border: 1px solid #222;
+
   }
 }
 
@@ -81,4 +99,8 @@ a {
 
 .browser-height {
   min-height: 100vh !important;
+}
+
+.align-right {
+  text-align: right;
 }

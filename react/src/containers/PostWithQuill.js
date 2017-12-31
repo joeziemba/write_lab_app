@@ -19,17 +19,38 @@ class PostWithQuill extends Component {
 
   handlePost(e) {
     e.preventDefault();
-    let newPost = {
+    let post = {
       character_id: this.props.currentCharacterId,
       text: this.state.text,
-      arc_id: this.props.params.id
+      arc_id: this.props.params.arc_id
     }
-    this.props.fetchPost(
-      '/api/v1/posts',
-      'POST',
-      newPost,
-      `/boards/${this.props.params.board_id}/arcs/${this.props.params.id}`
-    )
+    if(this.props.params.post_id){
+      this.props.fetchPost(
+        `/api/v1/posts/${this.props.params.post_id}`,
+        'PATCH',
+        post,
+        `/boards/${this.props.params.board_id}/arcs/${this.props.params.arc_id}`
+      )
+    } else {
+      this.props.fetchPost(
+        '/api/v1/posts',
+        'POST',
+        post,
+        `/boards/${this.props.params.board_id}/arcs/${this.props.params.arc_id}`
+      )
+    }
+  }
+
+  componentDidMount() {
+    if(this.props.params.post_id){
+      fetch(`/api/v1/posts/${this.props.params.post_id}`)
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          text: body.content
+        })
+      })
+    }
   }
 
   render() {
@@ -41,7 +62,7 @@ class PostWithQuill extends Component {
         />
         <form name='new_post_form' onSubmit={this.handlePost}>
           <input type='hidden' name='character_id' value={this.props.currentCharacterId} />
-          <input type='hidden' name='arc_id' value={this.props.params.id} />
+          <input type='hidden' name='arc_id' value={this.props.params.arc_id} />
           <input type='submit' value='Post' />
         </form>
       </div>

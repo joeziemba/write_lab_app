@@ -24,8 +24,9 @@ const App = (props) => {
       <Route path='/boards/:board_id' component={BoardContainer}>
         <IndexRoute component={ArcIndex} />
         <Route path='arcs/new' component={ArcNew} />
-        <Route path='arcs/:id' component={ArcShow} />
-        <Route path='arcs/:id/posts/new' component={PostWithQuill} />
+        <Route path='arcs/:arc_id' component={ArcShow} />
+        <Route path='arcs/:arc_id/posts/new' component={PostWithQuill} />
+        <Route path='arcs/:arc_id/posts/:post_id/edit' component={PostWithQuill} />
         <Route path='characters/new' component={CharacterForm} />
         <Route path='characters/:id/edit' component={EditCharacter} />
       </Route>

@@ -65,6 +65,7 @@ class ArcShow extends Component {
           avatar={post.character.avatar_url}
           postDate={post.created_at}
           delete={this.deletePost}
+          currentCharacterName={this.props.currentCharacterName}
         />
       )
     })

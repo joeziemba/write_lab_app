@@ -74,7 +74,6 @@ class ArcShow extends Component {
 
   deletePost(event) {
     event.preventDefault()
-    debugger;
     fetch(`/api/v1/posts/${event.target.id}`, {
       method: 'DELETE',
       credentials: 'same-origin',

@@ -44,6 +44,7 @@ class BoardContainer extends Component {
       }
     })
     .then(body => {
+      debugger;
       this.setState({
        name: body.boardData.name,
        description: body.boardData.description,

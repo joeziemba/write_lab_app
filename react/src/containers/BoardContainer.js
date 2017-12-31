@@ -12,7 +12,7 @@ class BoardContainer extends Component {
       image: '',
       boardId: '0',
       boardAuthorId: '',
-      currentAuthor: {},
+      currentAuthor: 0,
       characters: [],
       currentCharacter: {}
     }
@@ -113,6 +113,19 @@ class BoardContainer extends Component {
     this.getBoardData();
   }
 
+  renderCharMenu() {
+    return(
+      <CharacterMenu
+        boardId={this.state.boardId}
+        currentCharacterId={this.state.currentCharacter.id}
+        currentCharacterName={this.state.currentCharacter.name}
+        currentCharacterImage={this.state.currentCharacter.avatar_url}
+        characters={this.state.characters}
+        changeCharacter={this.changeCharacter}
+      />
+    )
+  }
+
   render() {
     return(
       <div className='grid-x' id='wrapper'>
@@ -125,14 +138,7 @@ class BoardContainer extends Component {
             currentAuthor={this.state.currentAuthor}
           />
         <div className='cell large-7 medium-7'>
-          <CharacterMenu
-            boardId={this.state.boardId}
-            currentCharacterId={this.state.currentCharacter.id}
-            currentCharacterName={this.state.currentCharacter.name}
-            currentCharacterImage={this.state.currentCharacter.avatar_url}
-            characters={this.state.characters}
-            changeCharacter={this.changeCharacter}
-          />
+          { this.state.currentAuthor != '' ? this.renderCharMenu() : null }
           <div className='grid-x'>
             <div className='cell large-12' id='main-content'>
               {this.renderChildren()}

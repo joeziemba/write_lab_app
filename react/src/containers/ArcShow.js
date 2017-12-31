@@ -16,10 +16,11 @@ class ArcShow extends Component {
     }
     this.getPosts = this.getPosts.bind(this);
     this.mapPosts = this.mapPosts.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   getPosts() {
-    fetch(`/api/v1/arcs/${this.props.params.id}`, {
+    fetch(`/api/v1/arcs/${this.props.params.arc_id}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -56,14 +57,30 @@ class ArcShow extends Component {
       return(
         <PostTile
           key={post.id}
+          board_id={this.props.params.board_id}
+          arc_id={this.props.params.arc_id}
+          id={post.id}
           content={post.content}
           character={post.character.name}
           avatar={post.character.avatar_url}
           postDate={post.created_at}
+          delete={this.deletePost}
+          currentCharacterName={this.props.currentCharacterName}
         />
       )
     })
     return posts;
+  }
+
+  deletePost(event) {
+    event.preventDefault()
+    debugger;
+    fetch(`/api/v1/posts/${event.target.id}`, {
+      method: 'DELETE',
+      credentials: 'same-origin',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => this.getPosts())
   }
 
   render() {
@@ -79,7 +96,7 @@ class ArcShow extends Component {
           {this.mapPosts()}
         </div>
         <div>
-          <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.id}/posts/new`}>Add New Post</Link>
+          <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.arc_id}/posts/new`}>Add New Post</Link>
         </div>
       </div>
     )

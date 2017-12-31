@@ -56,17 +56,23 @@ class ArcIndex extends Component {
     return arcList;
   }
 
+  newArcButton() {
+    return(
+      <div  className='grid-x'>
+        <a href={`/boards/${this.props.params.board_id}/arcs/new`} >
+        <div id='new-arc-tile' className='large-12 medium-12 small-12'>
+          <h4>Create New Arc</h4>
+        </div>
+        </a>
+      </div>
+    )
+  }
+
   render() {
     return(
       <div>
         {this.showArcs()}
-        <div  className='grid-x'>
-          <a href={`/boards/${this.props.params.board_id}/arcs/new`} >
-          <div id='new-arc-tile' className='large-12 medium-12 small-12'>
-            <h4>Create New Arc</h4>
-          </div>
-        </a>
-        </div>
+        {this.props.currentCharacterId > 0 ? this.newArcButton() : null}
       </div>
     )
   }

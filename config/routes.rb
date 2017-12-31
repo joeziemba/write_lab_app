@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         resources :arcs, only: [:index]
       end
       resources :arcs, only: [:show, :create]
-      resources :posts, only: [:create]
+      resources :posts, only: [:create, :show, :update, :destroy]
       resources :characters, only: [:show, :create, :update]
     end
   end
@@ -19,10 +19,8 @@ Rails.application.routes.draw do
 
   resources :boards, only: [:index, :show, :new, :edit] do
     resources :arcs, only: [:show, :new] do
-      resources :posts, only: [:new]
+      resources :posts, only: [:new, :edit]
     end
     resources :characters, only: [:new, :edit]
   end
-
-
 end

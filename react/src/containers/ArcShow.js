@@ -94,8 +94,8 @@ class ArcShow extends Component {
         <div>
           {this.mapPosts()}
         </div>
-        <div>
-          <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.arc_id}/posts/new`}>Add New Post</Link>
+        <div className='right'>
+          <Link to={`/boards/${this.props.params.board_id}/arcs/${this.props.params.arc_id}/posts/new`} className='button'>Add New Post</Link>
         </div>
       </div>
     )

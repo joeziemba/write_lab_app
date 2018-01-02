@@ -63,7 +63,7 @@ class PostWithQuill extends Component {
         <form name='new_post_form' onSubmit={this.handlePost}>
           <input type='hidden' name='character_id' value={this.props.currentCharacterId} />
           <input type='hidden' name='arc_id' value={this.props.params.arc_id} />
-          <input type='submit' value='Post' />
+          <input type='submit' value='Post' className='button' />
         </form>
       </div>
     )

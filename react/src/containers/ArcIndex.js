@@ -61,12 +61,12 @@ class ArcIndex extends Component {
 
   newArcButton() {
     return(
-      <div className='grid-x'>
-        <a href={`/boards/${this.props.params.board_id}/arcs/new`} >
-        <div id='new-arc-tile' className='large-12 medium-12 small-12'>
-          <h4>Create New Arc</h4>
-        </div>
+      <div className='grid-x' >
+        <div className='small-12 right'>
+          <a href={`/boards/${this.props.params.board_id}/arcs/new`} className='button' >
+          Create New Arc
         </a>
+        </div>
       </div>
     )
   }

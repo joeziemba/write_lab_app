@@ -56,7 +56,7 @@ class ArcNew extends Component {
             value={this.state.text}
             onChange={this.handlePostChange}
           />
-          <input type='submit' value='Post' />
+          <input type='submit' value='Post' className='button' />
         </form>
       </div>
     )

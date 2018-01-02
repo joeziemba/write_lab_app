@@ -11,9 +11,13 @@ Rails.application.routes.draw do
       resources :arcs, only: [:show, :create]
       resources :posts, only: [:create, :show, :update, :destroy]
       resources :characters, only: [:show, :create, :update]
+      resources :authors, only: [] do
+        collection do
+          get 'current'
+        end
+      end
     end
   end
-
   # APPLICATION ROUTES
   root 'application#home'
 

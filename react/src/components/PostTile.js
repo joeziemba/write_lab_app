@@ -34,7 +34,7 @@ const PostTile = (props) => {
       </div>
       <div className='post-body cell large-9 medium-12'>
         <div className='grid-x'>
-          <div className='cell small-8 xlarge-10 post-date'>
+          <div className='cell small-8 xlarge-10 subtitle'>
             Posted {showDate(props.postDate)}
           </div>
           {props.character == props.currentCharacterName ? utilButtons() : null}

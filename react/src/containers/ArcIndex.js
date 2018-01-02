@@ -41,14 +41,17 @@ class ArcIndex extends Component {
     let arcList = "Looks like there's nothing here!"
     if(this.state.arcs.length > 0) {
       arcList = this.state.arcs.map(a => {
+        let lastPost = a.posts.slice(-1)[0];
         return(
           <ArcTile
             key={a.id}
             id={a.id}
             title={a.title}
-            character={a.character}
+            character={a.character.name}
             postDate={a.created_at}
             boardId={this.props.params.board_id}
+            lastPostChar={lastPost.character.name}
+            lastPostDate={lastPost.created_at}
           />
         )
       })
@@ -58,7 +61,7 @@ class ArcIndex extends Component {
 
   newArcButton() {
     return(
-      <div  className='grid-x'>
+      <div className='grid-x'>
         <a href={`/boards/${this.props.params.board_id}/arcs/new`} >
         <div id='new-arc-tile' className='large-12 medium-12 small-12'>
           <h4>Create New Arc</h4>

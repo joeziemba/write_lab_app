@@ -8,11 +8,11 @@ class Api::V1::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @authorId = 0
+    @author_id = 0
     @characters = [{ id: 0, name: '' }]
 
     if current_author
-      @authorId = current_author.id
+      @author_id = current_author.id
       @last_visit = current_author.last_sign_in_at
       @current_visit = current_author.current_sign_in_at
       unless current_author.characters.empty?
@@ -26,7 +26,7 @@ class Api::V1::BoardsController < ApplicationController
     render json: {
       boardData: @board,
       currentAuthor: {
-        id: @authorId,
+        id: @author_id,
         lastVisit: @last_visit,
         currentVisit: @current_visit
       },

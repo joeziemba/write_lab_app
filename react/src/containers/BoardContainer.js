@@ -13,6 +13,8 @@ class BoardContainer extends Component {
       boardId: '0',
       boardAuthorId: '',
       currentAuthor: 0,
+      currentVisit: 0,
+      lastVisit: 0,
       characters: [],
       currentCharacter: {}
     }
@@ -50,7 +52,9 @@ class BoardContainer extends Component {
        image: body.boardData.image,
        boardId: body.boardData.id,
        boardAuthorId: body.boardData.author_id,
-       currentAuthor: body.currentAuthor,
+       currentVisit: body.currentAuthor.currentVisit,
+       lastVisit: body.currentAuthor.lastVisit,
+       currentAuthor: body.currentAuthor.author,
        characters: body.characters,
        currentCharacter: body.characters[0]
      });
@@ -102,6 +106,8 @@ class BoardContainer extends Component {
         return React.cloneElement(child, {
           currentCharacterId: this.state.currentCharacter.id,
           currentCharacterName: this.state.currentCharacter.name,
+          currentVisit: this.state.currentVisit,
+          lastVisit: this.state.lastVisit,
           fetchPost: this.fetchPost
         })
       })

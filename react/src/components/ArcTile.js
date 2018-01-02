@@ -9,7 +9,7 @@ const ArcTile = (props) => {
     return date
   }
   return(
-    <div className='arc-tile-container'>
+    <div className={`arc-tile-container ${props.activeArcClass}`}>
       <div className='arc-tile grid-x'>
         <div className='cell xlarge-8 large-6 medium-12'>
           <h4><Link to={`/boards/${props.boardId}/arcs/${props.id}`}>{props.title}</Link></h4>

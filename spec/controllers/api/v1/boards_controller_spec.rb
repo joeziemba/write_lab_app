@@ -23,11 +23,13 @@ describe Api::V1::BoardsController, type: :controller do
     expect(data['boardData']['description']).to eq("The Battle of Hogwarts and The Dark Lord Voldemort are now more legend than history. The magical world moved on to great prosperity in the wake of those events, but peace never last. Murmurs of a new dark force are beginning to ripple through Britain's wizarding community. And Hogwarts once again seems to be at risk.")
   end
 
-  it 'should return blank currentAuthor when no user is logged in' do
+  it 'should return blank currentAuthor id and visits when no user is logged in' do
     get :show, params: { id: testBoard.id }
     data = JSON.parse(response.body)
 
-    expect(data['currentAuthor']).to eq('')
+    expect(data['currentAuthor']['id']).to eq(0)
+    expect(data['currentAuthor']['lastVisit']).to eq(nil)
+    expect(data['currentAuthor']['currentVisit']).to eq(nil)
   end
 
   it 'should return an array with one blank character when no user is logged in' do
@@ -39,13 +41,15 @@ describe Api::V1::BoardsController, type: :controller do
     expect(data['characters'][0]['name']).to eq('')
   end
 
-  it "should return the user's id as currentAuthor when logged in" do
+  it "should return the user's id and last/current visit dates when logged in" do
     author = testBoard.author
     sign_in(author)
     get :show, params: { id: testBoard.id }
     data = JSON.parse(response.body)
 
-    expect(data['currentAuthor']).to eq(author.id)
+    expect(data['currentAuthor']['id']).to eq(author.id)
+    expect(data['currentAuthor']['lastVisit']).to eq(author.last_sign_in_at)
+    expect(data['currentAuthor']['currentVisit']).to eq(author.current_sign_in_at)
   end
 
   it 'should return an array of the users characters for the specified board' do

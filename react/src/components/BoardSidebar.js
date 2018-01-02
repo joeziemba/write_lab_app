@@ -9,7 +9,7 @@ const BoardSidebar = (props) => {
   }
   let editBoard;
   if(props.currentAuthor == props.boardAuthorId) {
-    editBoard = <a href={`/boards/${props.boardId}/edit`} className='util-button-dark'><i className="fas fa-edit"></i> Edit Board</a>
+    editBoard = <a href={`/boards/${props.boardId}/edit`} className='util-button-dark'><i className="fa fa-pencil"></i>&nbsp; Edit Board</a>
   }
   return(
     <div className='cell large-5 medium-5 hide-for-small-only' id='board-sidebar'>

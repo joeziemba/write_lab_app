@@ -39,7 +39,6 @@ class Api::V1::BoardsController < ApplicationController
   end
 
   def update
-    binding.pry
     board = Board.update(params[:id], board_params)
     if board.save
       render json: board

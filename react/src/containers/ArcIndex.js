@@ -42,6 +42,10 @@ class ArcIndex extends Component {
     if(this.state.arcs.length > 0) {
       arcList = this.state.arcs.map(a => {
         let lastPost = a.posts.slice(-1)[0];
+        let activeArcClass = '';
+        if(this.props.lastVisit < lastPost.created_at && lastPost.created_at < this.props.currentVisit) {
+          activeArcClass = 'active-arc'
+        }
         return(
           <ArcTile
             key={a.id}
@@ -52,6 +56,7 @@ class ArcIndex extends Component {
             boardId={this.props.params.board_id}
             lastPostChar={lastPost.character.name}
             lastPostDate={lastPost.created_at}
+            activeArcClass={activeArcClass}
           />
         )
       })

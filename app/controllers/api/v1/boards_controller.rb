@@ -1,5 +1,5 @@
 class Api::V1::BoardsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
 
   def index
     @boards = Board.all
@@ -31,6 +31,15 @@ class Api::V1::BoardsController < ApplicationController
   def create
     board = Board.new(board_params)
     board.author = current_author
+    if board.save
+      render json: board
+    else
+      render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    board = Board.update(params[:id], board_params)
     if board.save
       render json: board
     else

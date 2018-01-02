@@ -9,7 +9,8 @@ class BoardForm extends Component {
       name: '',
       description: '',
       image: 'https://images.unsplash.com/photo-1500445113926-4b0454111bc9?auto=format&fit=crop&w=2528&q=80',
-      errors: []
+      errors: [],
+      action: 'Create'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,12 +60,16 @@ class BoardForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let newBoard = {
+    let board = {
       name: this.state.name,
       description: this.state.description,
       image: this.state.image
     }
-    this.fetchPost('/api/v1/boards', 'POST', newBoard)
+    if(this.state.action == 'Edit') {
+      this.fetchPost(`/api/v1/boards/${this.props.params.board_id}`, 'PATCH', board)
+    } else {
+      this.fetchPost(`/api/v1/boards`, 'POST', board)
+    }
   }
 
   componentDidMount() {
@@ -75,23 +80,20 @@ class BoardForm extends Component {
         this.setState({
           name: body.boardData.name,
           description: body.boardData.description,
-          image: body.boardData.image
+          image: body.boardData.image,
+          action: 'Edit'
         })
       })
     }
   }
 
   render() {
-    let action = 'Create'
-    if(this.props.params.board_id){
-      action = 'Edit'
-    }
     return(
       <div className='book-background browser-height'>
         <div className="color-overlay browser-height center">
           <div className='grid-x'>
             <div className="cell large-4 large-offset-4 center-vertical form-container">
-              <h2>{ action } Board</h2>
+              <h2>{ this.state.action } Board</h2>
               <form onSubmit={this.handleSubmit}>
                 <TextField
                   fieldName='name'
@@ -114,7 +116,7 @@ class BoardForm extends Component {
                   value={this.state.image}
                   onChange={this.handleChange}
                 />
-                <input type='submit' className='button' value={ action } />
+                <input type='submit' className='button' value={ this.state.action } />
               </form>
             </div>
           </div>

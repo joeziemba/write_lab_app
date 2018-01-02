@@ -28,10 +28,10 @@ const CharacterMenu = (props) => {
             <div id='character-image' style={ background } />
             <h4>{props.currentCharacterName}</h4>
             <Link to={`/boards/${props.boardId}/characters/${props.currentCharacterId}/edit`} className='util-button'>
-              <i className="fas fa-edit"></i> Edit
+              <i className="fa fa-pencil"></i>&nbsp; Edit
             </Link>
             <Link href={`/boards/${props.boardId}/characters/new`} className='util-button'>
-              + New Character
+              <i className="fa fa-plus" aria-hidden="true"></i>&nbsp; New Character
             </Link>
           </div>
           <div className='cell large-4 medium-12 small-12'>

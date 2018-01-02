@@ -1,8 +1,10 @@
 .arc-tile {
-  padding: 30px;
+  padding: 10px;
+  font-size: 12px;
 
   h4 {
     margin:0;
+    padding: 16px;
     line-height: 100%;
     vertical-align: middle;
   }
@@ -21,4 +23,8 @@
   padding: 5px 30px;
   color: $dark-gray;
   font-size: 12px;
+}
+
+.arc-posts {
+  padding-left: 16px;
 }

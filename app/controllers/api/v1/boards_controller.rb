@@ -15,7 +15,7 @@ class Api::V1::BoardsController < ApplicationController
       @current_author_id = current_author.id
       unless current_author.characters.empty?
         @characters = current_author.characters.select { |c| c.board_id == @board.id }
-        if @characters = []
+        if @characters === []
           @characters = [{ id: 0, name: '' }]
         end
       end

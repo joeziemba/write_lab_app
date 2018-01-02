@@ -18,9 +18,11 @@ class Home extends Component {
       return response.json()
     })
     .then(body => {
-      this.setState({
-        userId: body.id
-      })
+      if(body != null) {
+        this.setState({
+          userId: body.id
+        })
+      }
     })
   }
 

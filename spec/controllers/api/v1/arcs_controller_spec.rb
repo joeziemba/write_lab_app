@@ -64,7 +64,7 @@ describe Api::V1::ArcsController, type: :controller do
   end
 
   describe 'POST#create' do
-    subject { post :create, params: { arc: { title: 'Storytime', board_id: testBoard.id, character_id: testChar.id }, text: 'Test Post' } }
+    subject { post :create, params: { arc: { title: 'Storytime', board_id: testBoard.id, character_id: testChar.id }, text: 'Test Post', tags: 'Tag One, Tag Two' } }
 
     it 'should return a json response' do
       expect(subject.status).to eq(200)
@@ -78,8 +78,12 @@ describe Api::V1::ArcsController, type: :controller do
       expect(body['arc']['character_id']).to eq(testChar.id)
     end
 
+    it 'should create a Tag for each item in the tags param' do
+      expect { subject }.to change { Tag.count }.by(2)
+    end
+
     it 'should return the json with errors if unseccessful' do
-      post :create, params: { arc: { title: '', board_id: '', character_id: '' } }
+      post :create, params: { arc: { title: '', board_id: '', character_id: '' }, tags: '' }
       body = JSON.parse(response.body)
 
       expect(body['errors']).to include('Character must exist')

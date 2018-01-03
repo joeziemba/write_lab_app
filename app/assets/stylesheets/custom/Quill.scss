@@ -11,7 +11,10 @@
 }
 
 .ql-editor {
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+  background-color: #fefefe;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  border: 1px solid #cacaca;
+  border-top: none;
 }
 
 .ql-toolbar.ql-snow {
@@ -32,5 +35,5 @@
 }
 
 .quill {
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }

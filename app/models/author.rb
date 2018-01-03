@@ -4,12 +4,12 @@ class Author < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Associations
+  # ASSOCIATIONS
   has_many :boards
   has_many :characters
   has_many :posts, through: :characters
   has_many :threads, through: :characters
 
-  # Validations
+  # VALIDATIONS
   validates_presence_of :username, :email, :password
 end

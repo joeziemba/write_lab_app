@@ -11,6 +11,5 @@ class Board < ApplicationRecord
   belongs_to :author
 
   # VALIDATIONS
-  validates :name,
-            presence: true
+  validates :name, presence: true
 end

@@ -8,10 +8,11 @@ class ArcNew extends Component {
     this.state = {
       arcTitle: '',
       text: '',
+      tags: '',
       errors: []
     }
     this.handlePostChange = this.handlePostChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handlePost = this.handlePost.bind(this);
 
   }
@@ -20,24 +21,26 @@ class ArcNew extends Component {
     this.setState({ text: value })
   }
 
-  handleTitleChange(e) {
+  handleChange(e) {
+    let key = e.target.name
     this.setState({
-      arcTitle: e.target.value
+      [key]: e.target.value
     })
   }
 
   handlePost(e) {
     e.preventDefault();
-    let newArc = {
+    let arc = {
       character_id: this.props.currentCharacterId,
       title: this.state.arcTitle,
       text: this.state.text,
-      board_id: this.props.params.board_id
+      board_id: this.props.params.board_id,
+      tags: this.state.tags
     }
     this.props.fetchPost(
       '/api/v1/arcs',
       'POST',
-      newArc,
+      arc,
       `/boards/${this.props.params.board_id}`
     )
   }
@@ -50,7 +53,10 @@ class ArcNew extends Component {
         </div>
         <form name='newArcForm' onSubmit={this.handlePost}>
           <label htmlFor='arcTitle'>
-            <input id='arc-title-field' name='arcTitle' type='text' placeholder='Arc Title' onChange={this.handleTitleChange} value={this.state.arcTitle} />
+            <input id='arc-title-field' name='arcTitle' type='text' placeholder='Arc Title' onChange={this.handleChange} value={this.state.arcTitle} />
+          </label>
+          <label htmlFor='tags'>
+            <input name='tags' type='text' placeholder='Tags seperated by commas' onChange={this.handleChange} value={this.state.tags} />
           </label>
           <ReactQuill
             value={this.state.text}

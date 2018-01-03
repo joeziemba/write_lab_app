@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import ArcTile from '../components/ArcTile';
+import ArcFilter from '../components/ArcFilter';
 
 class ArcIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      arcs: []
+      arcs: [],
+      filter: 'All'
     }
-    this.getThreads = this.getThreads.bind(this);
+    this.getArcs = this.getArcs.bind(this);
     this.showArcs = this.showArcs.bind(this);
   }
 
-  getThreads() {
-    fetch(`/api/v1/boards/${this.props.params.board_id}/arcs`, {
+  getArcs(arcTag = '') {
+    debugger;
+    fetch(`/api/v1/boards/${this.props.params.board_id}/arcs${arcTag}`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -26,15 +29,22 @@ class ArcIndex extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      let filterValue;
+      if(arcTag != ''){
+        filterValue = `Tagged '${arcTag.substr(1)}'`;
+      } else {
+        filterValue = 'All'
+      }
       this.setState({
-        arcs: body
-     });
+        arcs: body,
+        filter: filterValue
+      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
-    this.getThreads();
+    this.getArcs();
   }
 
   showArcs() {
@@ -57,6 +67,8 @@ class ArcIndex extends Component {
             lastPostChar={lastPost.character.name}
             lastPostDate={lastPost.created_at}
             activeArcClass={activeArcClass}
+            getArcs={this.getArcs}
+            tags={a.tags}
           />
         )
       })
@@ -79,6 +91,10 @@ class ArcIndex extends Component {
   render() {
     return(
       <div>
+        <ArcFilter
+          filter={this.state.filter}
+          getArcs={this.getArcs}
+        />
         {this.showArcs()}
         {this.props.currentCharacterId > 0 ? this.newArcButton() : null}
       </div>

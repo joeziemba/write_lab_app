@@ -26,6 +26,6 @@ class Api::V1::ArcsController < ApplicationController
   private
 
   def arc_params
-    params.require(:arc).permit(:title, :text, :board_id, :character_id)
+    params.require(:arc).permit(:title, :text, :board_id, :character_id, :all_tags)
   end
 end

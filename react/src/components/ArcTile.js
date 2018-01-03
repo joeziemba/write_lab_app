@@ -8,6 +8,14 @@ const ArcTile = (props) => {
     let date = strftimeEST('%b %d, %Y', new Date(input))
     return date
   }
+  let showTags = () => {
+    let tags = props.tags.map(tag => {
+      return(
+        <span className='tag'>{`${tag.name}`}</span>
+      )
+    })
+    return tags;
+  }
   return(
     <div className={`arc-tile-container ${props.activeArcClass}`}>
       <div className='arc-tile grid-x'>
@@ -26,7 +34,7 @@ const ArcTile = (props) => {
         </div>
       </div>
       <div className='grid-x arc-details'>
-        Tags:
+        Tags: {showTags()}
       </div>
     </div>
   )

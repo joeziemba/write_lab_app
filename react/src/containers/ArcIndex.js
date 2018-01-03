@@ -57,6 +57,7 @@ class ArcIndex extends Component {
             lastPostChar={lastPost.character.name}
             lastPostDate={lastPost.created_at}
             activeArcClass={activeArcClass}
+            tags={a.tags}
           />
         )
       })

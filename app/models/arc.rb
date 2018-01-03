@@ -7,6 +7,9 @@ class Arc < ApplicationRecord
 
   # ASSOCIATIONS
   has_many :posts
+  has_many :taggings
+  has_many :tags, through: :taggings
+
   belongs_to :character
   belongs_to :board
 

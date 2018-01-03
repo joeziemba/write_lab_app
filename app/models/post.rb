@@ -10,6 +10,5 @@ class Post < ApplicationRecord
   belongs_to :arc
 
   # VALIDATIONS
-  validates :content,
-            presence: true
+  validates :content, presence: true
 end

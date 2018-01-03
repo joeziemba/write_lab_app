@@ -12,7 +12,9 @@ class Api::V1::ArcsController < ApplicationController
   end
 
   def create
+    binding.pry
     arc = Arc.new(arc_params)
+    arc.all_tags=(params['tags'])
     post = Post.new(content: params['text'], character: arc.character, arc: arc)
     if arc.valid? && post.valid?
       arc.save
@@ -26,6 +28,6 @@ class Api::V1::ArcsController < ApplicationController
   private
 
   def arc_params
-    params.require(:arc).permit(:title, :text, :board_id, :character_id, :all_tags)
+    params.require(:arc).permit(:title, :text, :board_id, :character_id, :tags)
   end
 end

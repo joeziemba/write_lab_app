@@ -30,16 +30,17 @@ class ArcNew extends Component {
 
   handlePost(e) {
     e.preventDefault();
-    let newArc = {
+    let arc = {
       character_id: this.props.currentCharacterId,
       title: this.state.arcTitle,
       text: this.state.text,
-      board_id: this.props.params.board_id
+      board_id: this.props.params.board_id,
+      tags: this.state.tags
     }
     this.props.fetchPost(
       '/api/v1/arcs',
       'POST',
-      newArc,
+      arc,
       `/boards/${this.props.params.board_id}`
     )
   }

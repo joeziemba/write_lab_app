@@ -14,7 +14,6 @@ class ArcIndex extends Component {
   }
 
   getArcs(arcTag = '') {
-    debugger;
     fetch(`/api/v1/boards/${this.props.params.board_id}/arcs${arcTag}`, {
       credentials: 'same-origin'
     })

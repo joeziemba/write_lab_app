@@ -19,7 +19,7 @@ class Arc < ApplicationRecord
   # METHODS
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
-        Tag.where(name: name.strip).first_or_create!
+      Tag.where(name: name.strip).first_or_create!
     end
   end
 
@@ -30,5 +30,4 @@ class Arc < ApplicationRecord
   def self.tagged_with(name)
     Tag.find_by_name!(name).arcs
   end
-
 end

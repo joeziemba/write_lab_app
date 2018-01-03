@@ -79,7 +79,7 @@ describe Api::V1::ArcsController, type: :controller do
     end
 
     it 'should create a Tag for each item in the tags param' do
-      expect{subject}.to change{Tag.count}.by(2)
+      expect { subject }.to change { Tag.count }.by(2)
     end
 
     it 'should return the json with errors if unseccessful' do

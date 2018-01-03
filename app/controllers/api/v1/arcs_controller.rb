@@ -4,11 +4,10 @@ class Api::V1::ArcsController < ApplicationController
   def index
     if params[:tag]
       @arcs = Arc.tagged_with(params[:tag])
-      render json: @arcs
     else
       @arcs = Board.find(params[:board_id]).arcs.reverse
-      render json: @arcs
     end
+    render json: @arcs
   end
 
   def show

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  get '/api/v1/boards/:board_id/arcs/:tag', to: 'api/v1/arcs#index'
+
   # APPLICATION ROUTES
   root 'application#home'
 

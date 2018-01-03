@@ -2,8 +2,13 @@ class Api::V1::ArcsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
-    @arcs = Board.find(params[:board_id]).arcs.reverse
-    render json: @arcs
+    if params[:tag]
+      @arcs = Arc.tagged_with(params[:tag])
+      render json: @arcs
+    else
+      @arcs = Board.find(params[:board_id]).arcs.reverse
+      render json: @arcs
+    end
   end
 
   def show
@@ -12,7 +17,6 @@ class Api::V1::ArcsController < ApplicationController
   end
 
   def create
-    binding.pry
     arc = Arc.new(arc_params)
     arc.all_tags=(params['tags'])
     post = Post.new(content: params['text'], character: arc.character, arc: arc)

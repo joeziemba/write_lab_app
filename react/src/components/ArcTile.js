@@ -10,8 +10,11 @@ const ArcTile = (props) => {
   }
   let showTags = () => {
     let tags = props.tags.map(tag => {
+      let search = () => {
+        props.getArcs(`/${tag.name}`)
+      }
       return(
-        <span className='tag'>{`${tag.name}`}</span>
+        <a key={tag.id} className='tag' onClick={search}>{`${tag.name}`}</a>
       )
     })
     return tags;

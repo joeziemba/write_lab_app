@@ -1,5 +1,5 @@
 class ArcSerializer < ActiveModel::Serializer
-  attributes :id, :title, :created_at
+  attributes :id, :title, :created_at, :last_post_date
 
   has_many :tags
   belongs_to :character
@@ -11,5 +11,9 @@ class ArcSerializer < ActiveModel::Serializer
 
   class CharacterSerializer < ActiveModel::Serializer
     attributes :name
+  end
+
+  def last_post_date
+    object.posts.last.created_at
   end
 end

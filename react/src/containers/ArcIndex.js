@@ -46,10 +46,19 @@ class ArcIndex extends Component {
     this.getArcs();
   }
 
+  sortByKey(array, key) {
+    return array.sort(function(a, b) {
+      var x = a[key]; var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+  }
+
   showArcs() {
     let arcList = "Looks like there's nothing here!"
     if(this.state.arcs.length > 0) {
-      arcList = this.state.arcs.map(a => {
+      let sortedArcs = this.sortByKey(this.state.arcs, 'last_post_date')
+      sortedArcs.reverse()
+      arcList = sortedArcs.map(a => {
         let lastPost = a.posts.slice(-1)[0];
         let activeArcClass = '';
         if(this.props.lastVisit < lastPost.created_at && lastPost.created_at < this.props.currentVisit) {
@@ -72,6 +81,7 @@ class ArcIndex extends Component {
           />
         )
       })
+      this.sortByKey(arcList, )
     }
     return arcList;
   }

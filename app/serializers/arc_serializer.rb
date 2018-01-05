@@ -1,11 +1,9 @@
 class ArcSerializer < ActiveModel::Serializer
-  attributes  :id,
-              :title,
-              :created_at
+  attributes  :id, :title, :created_at
 
+  has_many :tags
   belongs_to :character
   has_many :posts
-  has_many :tags
 
   class PostSerializer < ActiveModel::Serializer
     attributes :id, :content, :created_at, :character

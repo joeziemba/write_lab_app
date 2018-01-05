@@ -19,6 +19,11 @@ const ArcTile = (props) => {
     })
     return tags;
   }
+  let editButton = () => {
+    return(
+      <Link to={`/boards/${props.boardId}/arcs/${props.id}/edit`}>Edit</Link>
+    )
+  }
   return(
     <div className={`arc-tile-container ${props.activeArcClass}`}>
       <div className='arc-tile grid-x'>
@@ -36,8 +41,13 @@ const ArcTile = (props) => {
           {showDate(props.lastPostDate)}
         </div>
       </div>
-      <div className='grid-x arc-details'>
-        Tags: {showTags()}
+      <div className='grid-x'>
+        <div className='cell small-10 arc-details'>
+          Tags: {showTags()}
+        </div>
+        <div className='cell small-2 right edit-arc'>
+          {props.character == props.currentCharacterName ? editButton() : null}
+        </div>
       </div>
     </div>
   )

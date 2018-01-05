@@ -1,5 +1,5 @@
 class Api::V1::ArcsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
 
   def index
     if params[:tag]
@@ -23,6 +23,18 @@ class Api::V1::ArcsController < ApplicationController
       arc.save
       post.save
       render json: { arc: arc, post: post }
+    else
+      render json: { errors: arc.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    arc = Arc.update(params[:id], arc_params)
+    binding.pry
+    arc.all_tags=(params['tags'])
+    binding.pry
+    if arc.save
+      render json: arc
     else
       render json: { errors: arc.errors.full_messages }, status: :unprocessable_entity
     end

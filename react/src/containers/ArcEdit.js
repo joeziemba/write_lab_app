@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import ReactQuill from 'react-quill';
+import TextField from '../components/TextField';
 
 class ArcEdit extends Component {
   constructor(props) {
@@ -64,12 +64,18 @@ class ArcEdit extends Component {
           <h3>Edit Arc</h3>
         </div>
         <form name='editArcForm' onSubmit={this.handlePost}>
-          <label htmlFor='title'>Title:
-            <input id='arc-title-field' name='title' type='text' placeholder='Arc Title' onChange={this.handleChange} value={this.state.title} />
-          </label>
-          <label htmlFor='tags'>Tags (seperated by commas):
-            <input name='tags' type='text' placeholder='Tags seperated by commas' onChange={this.handleChange} value={this.state.tags} />
-          </label>
+          <TextField
+            label='Title'
+            fieldName='title'
+            onChange={this.handleChange}
+            value={this.state.title}
+          />
+          <TextField
+            label='Tags (seperated by commas):'
+            fieldName='tags'
+            onChange={this.handleChange}
+            value={this.state.tags}
+          />
           <input type='submit' value='Post' className='button' />
         </form>
       </div>

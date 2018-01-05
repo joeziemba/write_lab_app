@@ -30,9 +30,7 @@ class Api::V1::ArcsController < ApplicationController
 
   def update
     arc = Arc.update(params[:id], arc_params)
-    binding.pry
     arc.all_tags=(params['tags'])
-    binding.pry
     if arc.save
       render json: arc
     else

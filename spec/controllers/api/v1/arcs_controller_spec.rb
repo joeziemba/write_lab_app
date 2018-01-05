@@ -9,6 +9,7 @@ describe Api::V1::ArcsController, type: :controller do
 
   let!(:post1) { Post.create(content: 'The first post!', arc: arc1, character: testChar) }
   let!(:post2) { Post.create(content: 'The second post!', arc: arc1, character: testChar2) }
+  let!(:post3) { Post.create(content: 'The third post!', arc: arc2, character: testChar2) }
 
   describe 'GET#index' do
     it 'should return a json response' do

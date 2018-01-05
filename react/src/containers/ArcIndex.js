@@ -68,6 +68,7 @@ class ArcIndex extends Component {
             activeArcClass={activeArcClass}
             getArcs={this.getArcs}
             tags={a.tags}
+            currentCharacterName={this.props.currentCharacterName}
           />
         )
       })

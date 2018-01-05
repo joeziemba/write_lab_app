@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :authors
 
-  # API ENDPOINT ROUTES
+  # API ENDPOINTS
   namespace :api do
     namespace :v1 do
       resources :boards, only: [:index, :show, :create, :update] do
         resources :arcs, only: [:index]
       end
-      resources :arcs, only: [:show, :create]
+      resources :arcs, only: [:show, :create, :update]
       resources :posts, only: [:create, :show, :update, :destroy]
       resources :characters, only: [:show, :create, :update]
       resources :authors, only: [] do
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   root 'application#home'
 
   resources :boards, only: [:index, :show, :new, :edit] do
-    resources :arcs, only: [:show, :new] do
+    resources :arcs, only: [:show, :new, :edit] do
       resources :posts, only: [:new, :edit]
     end
     resources :characters, only: [:new, :edit]

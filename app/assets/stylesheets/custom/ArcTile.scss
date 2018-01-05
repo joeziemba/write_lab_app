@@ -36,3 +36,22 @@
 .tag {
   margin-left: 6px;
 }
+
+.edit-arc {
+  border-top: 1px solid $medium-gray;
+  text-align: right;
+  color: $dark-gray;
+  a {
+    display: inline-block;
+    border-left: 1px solid $medium-gray;
+    width: 50px;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+    &:hover {
+      color: #3a3a3a;
+      background-color: $medium-gray;
+    }
+  }
+}

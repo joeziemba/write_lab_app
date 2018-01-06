@@ -4,4 +4,11 @@
 
 # README
 
-* Ruby version: 2.3.3
+#### [Live Demo](http://writelab.herokuapp.com/)
+
+## Technologies:
+* Ruby on Rails (Ruby 2.3.3, Rails 5.1)
+* Postgres Database
+* React.js
+* Quill.js (as react-quill package)
+* Zurb Foundation 6 (xy-grid)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
 import CharacterMenu  from '../components/CharacterMenu';
 import BoardSidebar   from '../components/BoardSidebar';
@@ -155,5 +155,17 @@ class BoardContainer extends Component {
     )
   }
 }
+
+// For Tests
+
+BoardContainer.propTypes = {
+  params: PropTypes.object
+};
+
+BoardContainer.defaultProps = {
+  params: {
+    id: 1
+  }
+};
 
 export default BoardContainer;
